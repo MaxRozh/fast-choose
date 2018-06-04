@@ -1,0 +1,25 @@
+{
+  "_locale": "ru",
+  "msg": [
+    {
+      "id": "common.placeholder",
+      "text": "Напишите"
+    },
+    {
+      "id": "common.greeting",
+      "text": "Привет"
+    },
+    {
+      "id": "common.guest",
+      "text": "Гость"
+    },
+    {
+      "id": "login.placeholder",
+      "text": "Ваше имя..."
+    },
+    {
+      "id": "common.ad",
+      "text": "Реклама"
+    }
+  ]
+}

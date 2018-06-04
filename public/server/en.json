@@ -1,0 +1,25 @@
+{
+  "_locale": "en",
+  "msg": [
+    {
+      "id": "common.placeholder",
+      "text": "Type here"
+    },
+    {
+      "id": "common.greeting",
+      "text": "Hi"
+    },
+    {
+      "id": "common.guest",
+      "text": "Guest"
+    },
+    {
+      "id": "login.placeholder",
+      "text": "Your name..."
+    },
+    {
+      "id": "common.ad",
+      "text": "Ad"
+    }
+  ]
+}

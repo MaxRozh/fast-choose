@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "link": "/where-to-go",
+      "koef": "0.7",
+      "display": {
+        "article": "where-to-go",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+    {
+      "link": "/style",
+      "koef": "0.3",
+      "display": {
+        "article": "style",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+    {
+      "link": "/where-to-go",
+      "koef": "0.5",
+      "display": {
+        "article": "where-to-go",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+    {
+      "link": "/food",
+      "koef": "0.4",
+      "display": {
+        "article": "food",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    }
+  ]
+}

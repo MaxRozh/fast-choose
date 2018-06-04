@@ -1,0 +1,109 @@
+{
+  "articleApi": "http://fast-choose.com/api/article.json",
+  "sectionApi": "http://fast-choose.com/api/article.json",
+  "newsApi": "http://fast-choose.com/api/article.json",
+  "banners": [
+    {
+      "id": 321,
+      "name": "Provide Support",
+      "description": "Provide support it's a great choose for your business",
+      "ad": false,
+      "link": "https://www.providesupport.com",
+      "imgLink": "https://www.providesupport.com/s/r8bmiw/root/xsl/home/index-new/img/1st-block/first-block-img-1@2x.png"
+    }
+  ],
+  "news": {
+    "date": "01/02/2018",
+    "newsArray": [
+      {
+        "id": 10123,
+        "article": "where-to-go",
+        "parentLink": "/where-to-go",
+        "link": "http://some-site.com/some-event",
+        "koef": 0.8,
+        "ad": true,
+        "display": {
+          "imgLink": "http://www.cgevent.com.ua/wp-content/uploads/2016/08/kiev.jpg",
+          "date": "01/20/2018 - 02/20/2018",
+          "description": "Some event will happen..."
+        }
+      },
+      {
+        "id": 10124,
+        "article": "where-to-go",
+        "parentLink": "/where-to-go",
+        "link": "http://some-site2.com/some-event",
+        "koef": 0.3,
+        "ad": false,
+        "display": {
+          "imgLink": "http://www.cgevent.ru/wp-content/uploads/2017/05/1-2.jpg",
+          "date": "01/20/2018 - 02/20/2018",
+          "description": "Some event 2 will happen..."
+        }
+      },
+      {
+        "id": 10125,
+        "article": "where-to-go",
+        "parentLink": "/where-to-go",
+        "link": "http://some-site3.com/some-event",
+        "koef": 0.7,
+        "ad": false,
+        "display": {
+          "imgLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-QKz9nsOmDDRJoZWQnMPFw_L4Y0krjLXSjnm-puojiuSmK9eN",
+          "date": "01/20/2018 - 02/20/2018",
+          "description": "Some event 3 will happen..."
+        }
+      }
+    ]
+  },
+  "articles": [
+    {
+      "link": "/where-to-go",
+      "id": 3312,
+      "koef": 0.7,
+      "display": {
+        "article": "where-to-go",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+    {
+      "link": "/style",
+      "id": 3313,
+      "koef": 0.3,
+      "display": {
+        "article": "style",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+    {
+      "link": "/where-to-go",
+      "id": 3314,
+      "koef": 0.5,
+      "display": {
+        "article": "where-to-go",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+    {
+      "link": "/food",
+      "id": 3315,
+      "koef": 0.4,
+      "display": {
+        "article": "food",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    }
+  ],
+  "lang": "ru",
+  "location": {
+    "country": "Ukraine",
+    "city": "Kiev"
+  },
+  "clientPreference": {
+    "articles": ["where-to-go", "style"]
+  }
+}

@@ -1,0 +1,113 @@
+
+.main-content h3 { font-weight: bold; }
+
+.main-content .ad {
+    position: absolute;
+    right: 0;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.home-banner, .home-articles, .home-news, .home-search { margin-top: 15px; }
+
+.home-articles h3, .home-news h3 { margin-bottom: 10px; }
+
+.home-banner h3, .home-articles h3, .home-news h3 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.home-articles .content-articles .article p,
+.home-banner .content-banner p {
+    font-size: 14px;
+}
+
+.home-banner {
+
+    .content-banner {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 20px;
+
+        p { max-width: 200px; }
+
+        a {
+            width: 100%;
+            height: 200px;
+            display: inline-block;
+            overflow: hidden;
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+    }
+
+}
+
+.home-articles {
+
+    .content-articles {
+        display: flex;
+
+        .article {
+            flex: 1;
+            cursor: pointer;
+
+            h4 {
+                margin-bottom: 5px;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            p { text-align: center; }
+        }
+    }
+}
+
+.home-news {
+
+    .content-news {
+        display: flex;
+
+        i {
+            float: right;
+            font-size: 12px;
+            margin-top: -10px;
+        }
+
+        > i {
+            position: absolute;
+            float: none;
+        }
+
+        .news {
+            position: relative;
+            flex: 1;
+            margin: 10px 10px;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 150px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.content-search .article {
+    width: 70%;
+    margin: 10px auto;
+    cursor: pointer;
+
+    h4 { font-weight: bold; }
+}

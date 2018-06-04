@@ -1,0 +1,12 @@
+{
+  "banners": [
+    {
+      "id": "321",
+      "name": "name",
+      "description": "some description...",
+      "ad": "false",
+      "link": "http://fast-choose.com",
+      "img-link": "http://fast-choose/images/img.png"
+    }
+  ]
+}

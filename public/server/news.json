@@ -1,0 +1,44 @@
+{
+  "date": "01/02/2018",
+  "news": [
+    {
+      "id": "0123",
+      "article": "where-to-go",
+      "parent-link": "/where-to-go",
+      "link": "http://some-site.com/some-event",
+      "koef": "0.8",
+      "ad": "true",
+      "display": {
+        "image": "http://some-site.com/some-event-img.png",
+        "date": "01/20/2018 - 02/20/2018",
+        "description": "Some event will happen..."
+      }
+    },
+    {
+      "id": "0124",
+      "article": "where-to-go",
+      "parent-link": "/where-to-go",
+      "link": "http://some-site2.com/some-event",
+      "koef": "0.3",
+      "ad": "false",
+      "display": {
+        "image": "http://some-site2.com/some-event-img.png",
+        "date": "01/20/2018 - 02/20/2018",
+        "description": "Some event 2 will happen..."
+      }
+    },
+    {
+      "id": "0125",
+      "article": "where-to-go",
+      "parent-link": "/where-to-go",
+      "link": "http://some-site3.com/some-event",
+      "koef": "0.7",
+      "ad": "false",
+      "display": {
+        "image": "http://some-site3.com/some-event-img.png",
+        "date": "01/20/2018 - 02/20/2018",
+        "description": "Some event 3 will happen..."
+      }
+    }
+  ]
+}
