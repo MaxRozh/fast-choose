@@ -3,13 +3,9 @@ import LocalStorageParams from './LocalStorageParams.js';
 
 class LocalStorageWorker {
 
-    constructor(screenType) {
+    constructor() {
 
-        let psAppLocalStorage = window.localStorage.getItem('ps_messenger') ? JSON.parse(window.localStorage.getItem('ps_messenger')) : {};
-
-        if (screenType !== 'room') {
-            psAppLocalStorage = {};
-        }
+        let psAppLocalStorage = window.localStorage.getItem('ls_fast_choose') ? JSON.parse(window.localStorage.getItem('ls_fast_choose')) : {};
 
         this.LocalStorageParams = new LocalStorageParams(psAppLocalStorage);
 
@@ -19,17 +15,10 @@ class LocalStorageWorker {
         LocalStorageWorker.getLocalStorageContainer = LocalStorageWorker.getLocalStorageContainer.bind(this);
         LocalStorageWorker.checkLocalStorageWorkerPresence = LocalStorageWorker.checkLocalStorageWorkerPresence.bind(this);
 
-        this.handleLocalStorageMessagesUpdate = this.handleLocalStorageMessagesUpdate.bind(this);
         this.handleLocalStorageUpdate = this.handleLocalStorageUpdate.bind(this);
     }
 
     static setLocalStorageContainer(container, value) {
-
-        if (container == 'messages') {
-
-            this.handleLocalStorageMessagesUpdate(value);
-            return;
-        }
 
         this.LocalStorageParams[container] = value;
         this.handleLocalStorageUpdate();
@@ -42,6 +31,7 @@ class LocalStorageWorker {
     }
 
     static resetLocalStorage() {
+
         this.LocalStorageParams = {};
         this.handleLocalStorageUpdate();
     }
@@ -52,19 +42,7 @@ class LocalStorageWorker {
 
     handleLocalStorageUpdate() {
         this.LocalStorageParams.lifeTime = +new Date();
-        window.localStorage.setItem('ps_messenger', JSON.stringify(this.LocalStorageParams));
-    }
-
-    handleLocalStorageMessagesUpdate(message) {
-        const messages = this.LocalStorageParams.messages ? this.LocalStorageParams.messages : [];
-
-        for (let i = 0; i < messages.length; i++) {
-            if (messages[i].id == message.id) return;
-        }
-        messages.push(message);
-
-        this.LocalStorageParams.messages = messages;
-        this.handleLocalStorageUpdate();
+        window.localStorage.setItem('ls_fast_choose', JSON.stringify(this.LocalStorageParams));
     }
 
     static checkLocalStorageWorkerPresence() {

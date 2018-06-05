@@ -14,8 +14,6 @@ const homeAppPromise = homeAppRequest();
 homeAppPromise.then(
     (homeAppParams) => {
 
-        log.warn('test', homeAppParams);
-
         const reducer = configurateReducers(homeAppParams);
         const store = createStore(reducer);
 
