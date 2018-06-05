@@ -8,6 +8,8 @@ const configurateHomeAppReducer = (initialState) => {
 
     return (state = initialState, action) => {
 
+        log.warn('i state', initialState);
+
         initialState.isSearching = false;
         initialState.searchingElements = [];
 

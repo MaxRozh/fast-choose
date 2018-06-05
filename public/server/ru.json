@@ -20,6 +20,22 @@
     {
       "id": "common.ad",
       "text": "Реклама"
+    },
+    {
+      "id": "common.banner",
+      "text": "Баннер"
+    },
+    {
+      "id": "common.articles",
+      "text": "Статьи"
+    },
+    {
+      "id": "common.search",
+      "text": "Поиск"
+    },
+    {
+      "id": "common.news",
+      "text": "Новости"
     }
   ]
 }

@@ -4,17 +4,19 @@ import PropTypes from 'prop-types';
 
 import './HomeApp.scss';
 
-function HomeApp({banners, articles, news, isSearching, searchingElements, onChooseArticle}) {
+function HomeApp({banners, articles, news, isSearching, searchingElements, onChooseArticle, text}) {
+
+    log.warn('comp, text', text);
 
     return (
         <div className="main-content">
 
             <div className="home-banner">
-                <h3>Banner:</h3>
+                <h3>{text.common.banner}:</h3>
 
                 <div className="content-banner">
-                    <p>{banners[0].name} {banners[0].ad ? <span className="ad">:ad</span> : null}</p>
-                    <a href={banners[0].link} target="_blank">
+                    <p>{banners[0].name} {banners[0].ad ? <span className="ad">:{text.common.ad}</span> : null}</p>
+                    <a href={banners[0].link} target="_blank" rel="noopener noreferrer">
                         <img src={banners[0].imgLink} alt={banners[0].name} />
                     </a>
                     <p>{banners[0].description}</p>
@@ -23,7 +25,7 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
 
             { !isSearching
                 ? <div className="home-articles">
-                    <h3>Articles:</h3>
+                    <h3>{text.common.articles}:</h3>
 
                     <div className="content-articles">
                         {
@@ -37,7 +39,7 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
                     </div>
                 </div>
                 : <div className="home-search">
-                    <h3>Search:</h3>
+                    <h3>{text.common.search}:</h3>
 
                     <div className="content-search">
                         {
@@ -53,7 +55,7 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
             }
 
             <div className="home-news">
-                <h3>News:</h3>
+                <h3>{text.common.news}:</h3>
 
                 <div className="content-news">
                     <i>{news.date}</i>
@@ -64,9 +66,9 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
                                 <h4 onClick={() => { onChooseArticle(item.parentLink); }}>
                                     {item.article}
                                 </h4>
-                                {item.ad ? <span className="ad">:ad</span> : null}
+                                {item.ad ? <span className="ad">:{text.common.ad}</span> : null}
                                 <i>{item.display.date}</i>
-                                <a href={item.link} target="_blank">
+                                <a href={item.link} target="_blank" rel="noopener noreferrer">
                                     <img src={item.display.imgLink} alt={item.article}/>
                                 </a>
                                 <p>{item.display.description}</p>
@@ -82,11 +84,12 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
 if (process.env !== 'production') {
 
     HomeApp.propTypes = {
-        banners: PropTypes.object.isRequired,
+        banners: PropTypes.array.isRequired,
         articles: PropTypes.array.isRequired,
         news: PropTypes.object.isRequired,
         isSearching: PropTypes.bool.isRequired,
         searchingElements: PropTypes.array.isRequired,
+        text: PropTypes.object.isRequired,
         onChooseArticle: PropTypes.func.isRequired
     };
 }

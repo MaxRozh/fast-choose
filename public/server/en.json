@@ -20,6 +20,22 @@
     {
       "id": "common.ad",
       "text": "Ad"
+    },
+    {
+      "id": "common.banner",
+      "text": "Banner"
+    },
+    {
+      "id": "common.articles",
+      "text": "Articles"
+    },
+    {
+      "id": "common.search",
+      "text": "Search"
+    },
+    {
+      "id": "common.news",
+      "text": "News"
     }
   ]
 }

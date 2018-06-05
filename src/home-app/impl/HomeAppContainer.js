@@ -3,14 +3,15 @@ import * as actions from './actions';
 
 export const mapStateToProps = (props) => {
 
-    const {banners, articles, news, searchingElements, isSearching} = props.homeApp;
+    const {banners, articles, news, searchingElements, isSearching, text} = props.homeApp;
 
     return {
         banners,
         articles,
         news,
         isSearching,
-        searchingElements
+        searchingElements,
+        text: text.homeAppText
     };
 };
 

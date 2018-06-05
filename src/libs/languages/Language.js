@@ -11,10 +11,10 @@ class Language {
     static getTextById(id) {
 
         for (let i = 0; i < this.messages.length; i++) {
-            if (this.messages[i]._id == id) {
+            if (this.messages[i].id == id) {
 
-                if (this.messages[i]._text.match('\n')) {
-                    let res = this.messages[i]._text.split('\n');
+                if (this.messages[i].text.match('\n')) {
+                    let res = this.messages[i].text.split('\n');
 
                     for (let k = 0; k < res.length; k++) {
                         res[k] = res[k].replace(/amp;/g, '');
@@ -23,7 +23,7 @@ class Language {
                     return res.join('</br>');
                 }
 
-                return this.messages[i]._text.replace(/amp;/g, '');
+                return this.messages[i].text.replace(/amp;/g, '');
             }
         }
     }
