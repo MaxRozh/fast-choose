@@ -1,8 +1,9 @@
 
 class LocalStorageParams {
 
-    constructor(favorites) {
-        this.favorites = favorites;
+    constructor(params) {
+        this.favorites = params.favorites;
+        this.loginParams = params.loginParams;
     }
 }
 

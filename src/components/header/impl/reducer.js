@@ -1,29 +1,56 @@
 
-import { SIGN_IN, LOGIN, SEARCH } from '../info/constants';
-import { headerStore } from '../info/store';
+import { SIGN_IN, LOGIN, SEARCH, LOGOUT } from '../info/constants';
+import createStore from '../info/createStore';
 
-export default function headerReducer(state = headerStore, action) {
-    switch (action.type) {
-        case SIGN_IN:
+import LocalStorageWorker from '../../../libs/local-storage-worker/LocalStorageWorker.js';
 
-            // console.group('SIGN_IN');
-            // console.warn('choose with:');
-            // console.table(action);
+const configurateHeaderReducer = (initialState) => {
 
-            return state;
-        case LOGIN:
+    const store = createStore(initialState, LocalStorageWorker.getLocalStorageContainer('loginParams'));
 
-            if (!action.isStartedLogin) {
-                state.isStartedLogin = true;
-            } else {
-                state.name = action.value;
-                state.isSignIn = true;
-            }
+    return (state = store, action) => {
 
-            return Object.assign({}, state);
-        case SEARCH:
-            return state;
-        default:
-            return state;
-    }
-}
+        log.warn('HEADER REDUCE', store);
+
+        switch (action.type) {
+            case SIGN_IN:
+
+                // console.group('SIGN_IN');
+                // console.warn('choose with:');
+                // console.table(action);
+
+                return state;
+            case LOGIN:
+
+                if (!action.isStartedLogin) {
+                    state.isStartedLogin = true;
+                } else {
+
+                    state.name = action.value;
+                    state.isSignIn = true;
+
+                    LocalStorageWorker.setLocalStorageContainer('loginParams', {
+                        isLogin: true,
+                        name: action.value
+                    });
+                }
+
+                return Object.assign({}, state);
+            case LOGOUT:
+
+                state.name = '';
+                state.isSignIn = false;
+                state.isStartedLogin = false;
+
+                LocalStorageWorker.resetLocalStorageContainer('loginParams');
+
+                return Object.assign({}, state);
+            case SEARCH:
+                return state;
+            default:
+                return state;
+        }
+    };
+};
+
+export default configurateHeaderReducer;

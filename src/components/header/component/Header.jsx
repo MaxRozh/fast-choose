@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './Header.scss';
 
-function Header({isSignIn = false, name, isStartedLogin = false, onSignIn, onLogin, onSearch}) {
+function Header({isSignIn = false, name, isStartedLogin = false, onSignIn, onLogin, onLogout, onSearch}) {
 
     let inputSearchElem = null;
     let inputLoginElem = null;
@@ -35,9 +35,7 @@ function Header({isSignIn = false, name, isStartedLogin = false, onSignIn, onLog
 
     return (
         <header>
-            <div className="logo">
-                Logo
-            </div>
+            <div className="logo">Logo</div>
 
             <div className="search">
                 <input
@@ -51,8 +49,11 @@ function Header({isSignIn = false, name, isStartedLogin = false, onSignIn, onLog
 
             <div className="sign-in">
                 <p>{isSignIn ? 'Hi ' + name : 'Hi guest'}</p>
-                { isSignIn ? null : (
-                    <div>
+                { isSignIn
+                    ? <div>
+                        <button onClick={onLogout}>Logout</button>
+                    </div>
+                    : <div>
                         <button onClick={onSignIn}>Sign up</button>
                         <button onClick={fireOnLogin}>Login</button>
                         { isStartedLogin
@@ -64,7 +65,7 @@ function Header({isSignIn = false, name, isStartedLogin = false, onSignIn, onLog
                             : null
                         }
                     </div>
-                )}
+                }
             </div>
         </header>
     );
@@ -78,6 +79,7 @@ if (process.env !== 'production') {
         isStartedLogin: PropTypes.bool.isRequired,
         onSignIn: PropTypes.func.isRequired,
         onLogin: PropTypes.func.isRequired,
+        onLogout: PropTypes.func.isRequired,
         onSearch: PropTypes.func.isRequired
     };
 }

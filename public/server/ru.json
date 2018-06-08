@@ -36,6 +36,18 @@
     {
       "id": "common.news",
       "text": "Новости"
+    },
+    {
+      "id": "header.logout",
+      "text": "Выйти"
+    },
+    {
+      "id": "header.signUp",
+      "text": "Регестрация"
+    },
+    {
+      "id": "header.login",
+      "text": "Войти"
     }
   ]
 }

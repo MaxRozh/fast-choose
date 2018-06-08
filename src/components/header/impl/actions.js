@@ -9,6 +9,12 @@ export const login = (isStartedLogin, value) => {
     };
 };
 
+export const logout = () => {
+    return {
+        type: constants.LOGOUT
+    };
+};
+
 export const signIn = () => {
     return {
         type: constants.SIGN_IN

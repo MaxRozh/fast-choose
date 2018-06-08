@@ -11,7 +11,7 @@ export const mapStateToProps = (props) => {
         news,
         isSearching,
         searchingElements,
-        text: text.homeAppText
+        text: text
     };
 };
 

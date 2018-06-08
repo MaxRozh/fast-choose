@@ -3,29 +3,24 @@
 
 // import { HomeAppActions } from './actions';
 import { CHOOSE_ARTICLE, SEARCH } from '../info/constants';
+import createStore from '../info/createStore.js';
 
 const configurateHomeAppReducer = (initialState) => {
 
-    return (state = initialState, action) => {
+    const store = createStore(initialState);
 
-        log.warn('i state', initialState);
+    return (state = store, action) => {
 
-        initialState.isSearching = false;
-        initialState.searchingElements = [];
+        log.warn('HOME APP REDUCE', store);
 
         switch (action.type) {
             case CHOOSE_ARTICLE:
-
-                // console.group('CHOOSE_ARTICLE');
-                // console.warn('choose with - ' + action.id);
-
                 return state;
-
             case SEARCH:
 
                 if (action.value.length === 0) {
                     state.isSearching = false;
-                    return state;
+                    return Object.assign({}, state);
                 }
 
                 const reg = new RegExp(action.value, 'gi');

@@ -36,6 +36,18 @@
     {
       "id": "common.news",
       "text": "News"
+    },
+    {
+      "id": "header.logout",
+      "text": "Logout"
+    },
+    {
+      "id": "header.signUp",
+      "text": "Sign up"
+    },
+    {
+      "id": "header.login",
+      "text": "Login"
     }
   ]
 }
