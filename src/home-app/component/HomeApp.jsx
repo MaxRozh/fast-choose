@@ -16,7 +16,7 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
                         <h3>{text.common.banner}:</h3>
 
                         <div className="content-banner">
-                            <p>{banners[0].name} {banners[0].ad ? <span className="ad">:{text.common.ad}</span> : null}</p>
+                            <p>{banners[0].name} {banners[0].ad ? <span className="ad">{text.common.ad}</span> : null}</p>
                             <a href={banners[0].link} target="_blank" rel="noopener noreferrer">
                                 <img src={banners[0].imgLink} alt={banners[0].name} />
                             </a>
@@ -51,7 +51,7 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
                                         <h4 onClick={() => { onChooseArticle(item.parentLink); }}>
                                             {item.article}
                                         </h4>
-                                        {item.ad ? <span className="ad">:{text.common.ad}</span> : null}
+                                        {item.ad ? <span className="ad">{text.common.ad}</span> : null}
                                         <i>{item.display.date}</i>
                                         <a href={item.link} target="_blank" rel="noopener noreferrer">
                                             <img src={item.display.imgLink} alt={item.article}/>
@@ -68,13 +68,14 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
                     <h3>{text.common.search}:</h3>
 
                     <div className="content-search">
-                        {
-                            searchingElements.map((item) =>
+                        {searchingElements.length !== 0
+                            ? searchingElements.map((item) =>
                                 <div className="article" onClick={() => { onChooseArticle(item.link); }} key={item.id} >
                                     <h4>{item.display.article}</h4>
                                     <p>{item.display.description}</p>
                                 </div>
                             )
+                            : <p>{text.common.noResults}</p>
                         }
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import Language from '../languages/Language.js';
 
 import createCommonText from './creators/createCommonText.js';
 import createLoginText from './creators/createLoginText.js';
+import createFooterText from './creators/createFooterText.js';
 
 class TextCreator {
 
@@ -21,6 +22,13 @@ class TextCreator {
 
         return {
             text: createLoginText()
+        };
+    }
+
+    static createFooterText() {
+
+        return {
+            text: createFooterText()
         };
     }
 }

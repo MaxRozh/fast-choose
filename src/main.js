@@ -22,7 +22,9 @@ homeAppPromise.then(
 
         homeAppParams.text = {
             homeAppText: TextCreator.createHomeAppText(),
-            headerText: TextCreator.createLoginText()
+            headerText: TextCreator.createLoginText(),
+            footerText: TextCreator.createFooterText(),
+            sideBarText: {}
         };
 
         const reducer = configurateReducers(homeAppParams);

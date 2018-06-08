@@ -1,11 +1,10 @@
 
 export const mapStateToProps = (props) => {
-
-    // const {isSignIn, name, isStartedLogin} = props.header;
-
-    return {};
+    return {
+        text: props.footer.text.text
+    };
 };
 
-export const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = () => {
     return {};
 };

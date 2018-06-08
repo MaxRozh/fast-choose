@@ -1,10 +1,10 @@
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './Footer.scss';
 
-function Footer() {
+function Footer({text}) {
 
     return (
         <footer className="footer">
@@ -16,50 +16,38 @@ function Footer() {
                 </div>
 
                 <div className="footer_company footer-col">
-                    <p className="footer_title">Company</p>
+                    <p className="footer_title">{text.company}</p>
 
                     <a className="footer_link" href="#">
-                        About
+                        {text.about}
                     </a>
                     <a className="footer_link" href="#">
-                        Jobs
-                    </a>
-                    <a className="footer_link" href="#">
-                        For the record
+                        {text.jobs}
                     </a>
                 </div>
 
                 <div className="footer_commun footer-col">
-                    <p className="footer_title">Communities</p>
+                    <p className="footer_title">{text.commun}</p>
 
                     <a className="footer_link" href="#">
-                        For Artists
+                        {text.fCompanies}
                     </a>
                     <a className="footer_link" href="#">
-                        Developers
+                        {text.developers}
                     </a>
                     <a className="footer_link" href="#">
-                        Brands
+                        {text.brands}
                     </a>
                     <a className="footer_link" href="#">
-                        Investors
-                    </a>
-                    <a className="footer_link" href="#">
-                        Vendors
+                        {text.investors}
                     </a>
                 </div>
 
                 <div className="footer_oth-links footer-col">
-                    <p className="footer_title">Useful Links</p>
+                    <p className="footer_title">{text.uLinks}</p>
 
                     <a className="footer_link" href="#">
-                        Help
-                    </a>
-                    <a className="footer_link" href="#">
-                        Gift
-                    </a>
-                    <a className="footer_link" href="#">
-                        Web Player
+                        {text.help}
                     </a>
                 </div>
 
@@ -74,16 +62,16 @@ function Footer() {
             <div className="footer_p2">
                 <div className="footer_p2_links">
                     <a className="footer_p2_link" href="#">
-                        Legal
+                        {text.legal}
                     </a>
                     <a className="footer_p2_link" href="#">
-                        Privacy
+                        {text.privacy}
                     </a>
                     <a className="footer_p2_link" href="#">
-                        Cookies
+                        {text.cookies}
                     </a>
                     <a className="footer_p2_link" href="#">
-                        About Ads
+                        {text.aAds}
                     </a>
                 </div>
 
@@ -98,11 +86,11 @@ function Footer() {
     );
 }
 
-// if (process.env !== 'production') {
-//
-//     Footer.propTypes = {
-//
-//     };
-// }
+if (process.env !== 'production') {
+
+    Footer.propTypes = {
+        text: PropTypes.object.isRequired
+    };
+}
 
 export default Footer;

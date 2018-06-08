@@ -1,40 +1,57 @@
 
 import { REMOVE_FAVORITE, REMOVE_LIBRARY, REMOVE_HISTORY } from '../info/constants';
-import { sideBarStore } from '../info/store';
+import createStore from '../info/createStore';
 
-export default function sideBarReducer(state = sideBarStore, action) {
-    switch (action.type) {
-        case REMOVE_FAVORITE:
+import LocalStorageWorker from '../../../libs/local-storage-worker/LocalStorageWorker.js';
 
-            state.favorites = state.favorites.filter((item) => {
-                return item.id !== action.id
-            });
+const configurateSideBarReducer = (initialState) => {
 
-            //if (isLogin)request
-            //localStorage
+    const store = createStore(
+        initialState,
+        LocalStorageWorker.getLocalStorageContainer('favorites'),
+        LocalStorageWorker.getLocalStorageContainer('library'),
+        LocalStorageWorker.getLocalStorageContainer('history'),
+        LocalStorageWorker.getLocalStorageContainer('loginParams'));
 
-            return Object.assign({}, state);
-        case REMOVE_LIBRARY:
+    return (state = store, action) => {
 
-            state.favorites = state.favorites.filter((item) => {
-                return item.id !== action.id
-            });
+        log.warn('SIDEBAR REDUCE', store);
 
-            //if (isLogin)request
-            //localStorage
+        switch (action.type) {
+            case REMOVE_FAVORITE:
 
-            return Object.assign({}, state);
-        case REMOVE_HISTORY:
+                state.favorites = state.favorites.filter((item) => {
+                    return item.id !== action.id;
+                });
 
-            state.favorites = state.favorites.filter((item) => {
-                return item.id !== action.id
-            });
+                //if (isLogin)request
+                //localStorage
 
-            //if (isLogin)request
-            //localStorage
+                return Object.assign({}, state);
+            case REMOVE_LIBRARY:
 
-            return Object.assign({}, state);
-        default:
-            return state;
-    }
-}
+                state.favorites = state.favorites.filter((item) => {
+                    return item.id !== action.id;
+                });
+
+                //if (isLogin)request
+                //localStorage
+
+                return Object.assign({}, state);
+            case REMOVE_HISTORY:
+
+                state.favorites = state.favorites.filter((item) => {
+                    return item.id !== action.id;
+                });
+
+                //if (isLogin)request
+                //localStorage
+
+                return Object.assign({}, state);
+            default:
+                return state;
+        }
+    };
+};
+
+export default configurateSideBarReducer;

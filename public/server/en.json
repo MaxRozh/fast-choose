@@ -38,16 +38,72 @@
       "text": "News"
     },
     {
+      "id": "common.no-results",
+      "text": "No results"
+    },
+    {
       "id": "header.logout",
       "text": "Logout"
     },
     {
-      "id": "header.signUp",
-      "text": "Sign up"
-    },
-    {
       "id": "header.login",
       "text": "Login"
+    },
+    {
+      "id": "footer.company",
+      "text": "Company"
+    },
+    {
+      "id": "footer.about",
+      "text": "About"
+    },
+    {
+      "id": "footer.jobs",
+      "text": "Jobs"
+    },
+    {
+      "id": "footer.commun",
+      "text": "Communities"
+    },
+    {
+      "id": "footer.f-companies",
+      "text": "For Companies"
+    },
+    {
+      "id": "footer.developers",
+      "text": "Developers"
+    },
+    {
+      "id": "footer.brands",
+      "text": "Brands"
+    },
+    {
+      "id": "footer.investors",
+      "text": "Investors"
+    },
+    {
+      "id": "footer.u-links",
+      "text": "Useful Links"
+    },
+    {
+      "id": "footer.help",
+      "text": "Help"
+    },
+    {
+      "id": "footer.legal",
+      "text": "Legal"
+    },
+    {
+      "id": "footer.privacy",
+      "text": "Privacy"
+    },
+    {
+      "id": "footer.cookies",
+      "text": "Cookies"
+    },
+    {
+      "id": "footer.a-ads",
+      "text": "About Ads"
     }
   ]
 }

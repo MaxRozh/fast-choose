@@ -38,6 +38,10 @@
       "text": "Новости"
     },
     {
+      "id": "common.no-results",
+      "text": "Нет результатов поиска"
+    },
+    {
       "id": "header.logout",
       "text": "Выйти"
     },
@@ -48,6 +52,62 @@
     {
       "id": "header.login",
       "text": "Войти"
+    },
+    {
+      "id": "footer.company",
+      "text": "Компания"
+    },
+    {
+      "id": "footer.about",
+      "text": "Про нас"
+    },
+    {
+      "id": "footer.jobs",
+      "text": "Работа"
+    },
+    {
+      "id": "footer.commun",
+      "text": "Сообщества"
+    },
+    {
+      "id": "footer.f-companies",
+      "text": "Для компаний"
+    },
+    {
+      "id": "footer.developers",
+      "text": "Разработчикам"
+    },
+    {
+      "id": "footer.brands",
+      "text": "Бренды"
+    },
+    {
+      "id": "footer.investors",
+      "text": "Инвесторы"
+    },
+    {
+      "id": "footer.u-links",
+      "text": "Полезные ссылки"
+    },
+    {
+      "id": "footer.help",
+      "text": "Помощь"
+    },
+    {
+      "id": "footer.legal",
+      "text": "Легальный"
+    },
+    {
+      "id": "footer.privacy",
+      "text": "Конфиденциальность"
+    },
+    {
+      "id": "footer.cookies",
+      "text": "Куки"
+    },
+    {
+      "id": "footer.a-ads",
+      "text": "Про рекламу"
     }
   ]
 }

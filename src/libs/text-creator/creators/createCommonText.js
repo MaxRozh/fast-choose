@@ -11,7 +11,8 @@ const createCommonText = () => {
         banner: Language.getTextById('common.banner'),
         articles: Language.getTextById('common.articles'),
         search: Language.getTextById('common.search'),
-        news: Language.getTextById('common.news')
+        news: Language.getTextById('common.news'),
+        noResults: Language.getTextById('common.no-results')
     };
 };
 

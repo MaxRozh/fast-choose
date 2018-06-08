@@ -104,10 +104,14 @@
     }
 }
 
-.content-search .article {
-    width: 70%;
-    margin: 10px auto;
-    cursor: pointer;
+.home-search {
+    margin-bottom: 20px;
 
-    h4 { font-weight: bold; }
+    .content-search .article {
+        width: 70%;
+        margin: 10px auto;
+        cursor: pointer;
+
+        h4 { font-weight: bold; }
+    }
 }

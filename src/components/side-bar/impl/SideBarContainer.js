@@ -17,6 +17,6 @@ export const mapDispatchToProps = (dispatch) => {
     return {
         removeFavorite: (id) => dispatch(actions.removeFavorite()),
         removeLibrary: (id) => dispatch(actions.removeLibrary(id)),
-        removeHistory: (id) => dispatch(actions.removeLibrary(id)),
+        removeHistory: (id) => dispatch(actions.removeHistory(id))
     };
 };
