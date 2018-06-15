@@ -60,6 +60,7 @@ const createStore = (params, favorites, library, history, loginParams) => {
         favorites: favorites || testFavorites,
         library: library || testLibrary,
         history: history || testHistory,
+        openedListType: null,
         isLogin: loginParams ? loginParams.isLogin : false
     };
 };

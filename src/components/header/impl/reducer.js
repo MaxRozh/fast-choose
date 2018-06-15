@@ -10,8 +10,6 @@ const configurateHeaderReducer = (initialState) => {
 
     return (state = store, action) => {
 
-        log.warn('HEADER REDUCE', store);
-
         switch (action.type) {
             case SIGN_IN:
 

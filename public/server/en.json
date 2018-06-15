@@ -42,12 +42,16 @@
       "text": "No results"
     },
     {
-      "id": "header.logout",
-      "text": "Logout"
-    },
-    {
       "id": "header.login",
       "text": "Login"
+    },
+    {
+      "id": "header.signUp",
+      "text": "Sign up"
+    },
+    {
+      "id": "header.logout",
+      "text": "Logout"
     },
     {
       "id": "footer.company",

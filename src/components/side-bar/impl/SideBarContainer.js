@@ -3,20 +3,24 @@ import * as actions from './actions';
 
 export const mapStateToProps = (props) => {
 
-    const {favorites, library, history, isLogin} = props.sideBar;
+    const {favorites, library, history, openedListType, isLogin} = props.sideBar;
 
     return {
         favorites,
         library,
         history,
+        openedListType,
         isLogin
     };
 };
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        removeFavorite: (id) => dispatch(actions.removeFavorite()),
-        removeLibrary: (id) => dispatch(actions.removeLibrary(id)),
-        removeHistory: (id) => dispatch(actions.removeHistory(id))
+        onRemoveFavorite: (id) => dispatch(actions.removeFavorite(id)),
+        onRemoveLibrary: (id) => dispatch(actions.removeLibrary(id)),
+        onRemoveHistory: (id) => dispatch(actions.removeHistory(id)),
+        onOpenList: (listType, notClosedElem) => dispatch(actions.openList(listType, notClosedElem,
+            () => { dispatch(actions.closeList()); })
+        )
     };
 };

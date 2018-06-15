@@ -2,3 +2,5 @@
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 export const REMOVE_LIBRARY = 'REMOVE_LIBRARY';
 export const REMOVE_HISTORY = 'REMOVE_HISTORY';
+export const OPEN_LIST = 'OPEN_LIST';
+export const CLOSE_LIST = 'CLOSE_LIST';

@@ -3,11 +3,7 @@ import createStore from '../info/createStore';
 
 const configurateFooterReducer = (initialState) => {
 
-    log.warn(initialState);
-
     const store = createStore(initialState);
-
-    log.warn(store);
 
     return (state = store, action) => {
 

@@ -11,8 +11,6 @@ const configurateHomeAppReducer = (initialState) => {
 
     return (state = store, action) => {
 
-        log.warn('HOME APP REDUCE', store);
-
         switch (action.type) {
             case CHOOSE_ARTICLE:
                 return state;

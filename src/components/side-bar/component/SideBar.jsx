@@ -4,21 +4,29 @@ import PropTypes from 'prop-types';
 
 import './SideBar.scss';
 
-function SideBar({favorites, library, history, removeFavorite, removeLibrary, removeHistory}) {
+function SideBar({favorites, library, history, openedListType, onRemoveFavorite, onRemoveLibrary,
+    onRemoveHistory, onOpenList}) {
+
+    const fireOnOpenList = (listType) => {
+        onOpenList(listType, 'remove-item');
+    };
 
     return (
         <div className="side-bar">
 
             <div className="side-bar_item favorites">
-                <span className="favorites_icon" />
-                <div className="side-bar_list favorites_list">
+                <span
+                    className="favorites_icon side-bar_item-input"
+                    onClick={() => { fireOnOpenList('favorites_icon'); }}
+                >F</span>
+                <div className={'side-bar_list' + (openedListType === 'favorites' ? ' opened' : '')}>
                     {
                         favorites.map((item) => {
-                            return <div className="favorite-item" key={item.id}>
+                            return <div className="side-bar_list-item" key={item.id}>
                                 <a href={item.link}>{item.text}</a>
                                 <span
                                     className="remove-item"
-                                    onClick={() => { removeFavorite(item.id); }}
+                                    onClick={() => { onRemoveFavorite(item.id); }}
                                 >X</span>
                             </div>;
                         })
@@ -26,16 +34,19 @@ function SideBar({favorites, library, history, removeFavorite, removeLibrary, re
                 </div>
             </div>
 
-            <div className="side-bar_item my-library">
-                <span className="library_icon" />
-                <div className="side-bar_list library_list">
+            <div className="side-bar_item">
+                <span
+                    className="library_icon side-bar_item-input"
+                    onClick={() => { fireOnOpenList('library_icon'); }}
+                >L</span>
+                <div className={'side-bar_list' + (openedListType === 'library' ? ' opened' : '')}>
                     {
                         library.map((item) => {
-                            return <div className="library-item" key={item.id}>
+                            return <div className="side-bar_list-item" key={item.id}>
                                 <a href={item.link}>{item.text}</a>
                                 <span
                                     className="remove-item"
-                                    onClick={() => { removeLibrary(item.id); }}
+                                    onClick={() => { onRemoveLibrary(item.id); }}
                                 >X</span>
                             </div>;
                         })
@@ -44,15 +55,18 @@ function SideBar({favorites, library, history, removeFavorite, removeLibrary, re
             </div>
 
             <div className="side-bar_item history">
-                <span className="history_icon" />
-                <div className="side-bar_list history_list">
+                <span
+                    className="history_icon side-bar_item-input"
+                    onClick={() => { fireOnOpenList('history_icon'); }}
+                >H</span>
+                <div className={'side-bar_list' + (openedListType === 'history' ? ' opened' : '')}>
                     {
                         history.map((item) => {
-                            return <div className="history-item" key={item.id}>
+                            return <div className="side-bar_list-item" key={item.id}>
                                 <a href={item.link}>{item.text}</a>
                                 <span
                                     className="remove-item"
-                                    onClick={() => { removeHistory(item.id); }}
+                                    onClick={() => { onRemoveHistory(item.id); }}
                                 >X</span>
                             </div>;
                         })
@@ -70,9 +84,14 @@ if (process.env !== 'production') {
         favorites: PropTypes.array.isRequired,
         library: PropTypes.array.isRequired,
         history: PropTypes.array.isRequired,
-        removeFavorite: PropTypes.func.isRequired,
-        removeLibrary: PropTypes.func.isRequired,
-        removeHistory: PropTypes.func.isRequired
+        openedListType: PropTypes.oneOfType([
+            PropTypes.string.isRequired,
+            PropTypes.bool.isRequired
+        ]),
+        onRemoveFavorite: PropTypes.func.isRequired,
+        onRemoveLibrary: PropTypes.func.isRequired,
+        onRemoveHistory: PropTypes.func.isRequired,
+        onOpenList: PropTypes.func.isRequired
     };
 }
 
