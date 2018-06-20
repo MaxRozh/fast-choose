@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './SideBar.scss';
 
-function SideBar({favorites, library, history, openedListType, onRemoveFavorite, onRemoveLibrary,
+function SideBar({favorites, library, history, openedListType, text, onRemoveFavorite, onRemoveLibrary,
     onRemoveHistory, onOpenList}) {
 
     const fireOnOpenList = (listType) => {
@@ -20,8 +20,9 @@ function SideBar({favorites, library, history, openedListType, onRemoveFavorite,
                     onClick={() => { fireOnOpenList('favorites_icon'); }}
                 >F</span>
                 <div className={'side-bar_list' + (openedListType === 'favorites' ? ' opened' : '')}>
-                    {
-                        favorites.map((item) => {
+                    { favorites.length === 0
+                        ? <span>{text.noSaved}</span>
+                        : favorites.map((item) => {
                             return <div className="side-bar_list-item" key={item.id}>
                                 <a href={item.link}>{item.text}</a>
                                 <span
@@ -31,6 +32,7 @@ function SideBar({favorites, library, history, openedListType, onRemoveFavorite,
                             </div>;
                         })
                     }
+
                 </div>
             </div>
 
@@ -40,8 +42,9 @@ function SideBar({favorites, library, history, openedListType, onRemoveFavorite,
                     onClick={() => { fireOnOpenList('library_icon'); }}
                 >L</span>
                 <div className={'side-bar_list' + (openedListType === 'library' ? ' opened' : '')}>
-                    {
-                        library.map((item) => {
+                    { library.length === 0
+                        ? <span>{text.noSaved}</span>
+                        : library.map((item) => {
                             return <div className="side-bar_list-item" key={item.id}>
                                 <a href={item.link}>{item.text}</a>
                                 <span
@@ -60,8 +63,9 @@ function SideBar({favorites, library, history, openedListType, onRemoveFavorite,
                     onClick={() => { fireOnOpenList('history_icon'); }}
                 >H</span>
                 <div className={'side-bar_list' + (openedListType === 'history' ? ' opened' : '')}>
-                    {
-                        history.map((item) => {
+                    { history.length === 0
+                        ? <span>{text.noSaved}</span>
+                        : history.map((item) => {
                             return <div className="side-bar_list-item" key={item.id}>
                                 <a href={item.link}>{item.text}</a>
                                 <span
@@ -88,6 +92,7 @@ if (process.env !== 'production') {
             PropTypes.string.isRequired,
             PropTypes.bool.isRequired
         ]),
+        text: PropTypes.object.isRequired,
         onRemoveFavorite: PropTypes.func.isRequired,
         onRemoveLibrary: PropTypes.func.isRequired,
         onRemoveHistory: PropTypes.func.isRequired,

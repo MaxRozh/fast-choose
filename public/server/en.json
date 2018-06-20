@@ -108,6 +108,10 @@
     {
       "id": "footer.a-ads",
       "text": "About Ads"
+    },
+    {
+      "id": "sidebar.no-saved",
+      "text": "No saved"
     }
   ]
 }

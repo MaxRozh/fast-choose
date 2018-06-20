@@ -3,14 +3,15 @@ import * as actions from './actions';
 
 export const mapStateToProps = (props) => {
 
-    const {favorites, library, history, openedListType, isLogin} = props.sideBar;
+    const {favorites, library, history, openedListType, isLogin, text} = props.sideBar;
 
     return {
         favorites,
         library,
         history,
         openedListType,
-        isLogin
+        isLogin,
+        text
     };
 };
 

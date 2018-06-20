@@ -3,9 +3,10 @@ import LocalStorageParams from './LocalStorageParams.js';
 
 class LocalStorageWorker {
 
-    constructor() {
+    constructor(localStorageType) {
 
-        let psAppLocalStorage = window.localStorage.getItem('ls_fast_choose') ? JSON.parse(window.localStorage.getItem('ls_fast_choose')) : {};
+        this.lsName = 'ls_fc_' + localStorageType;
+        let psAppLocalStorage = window.localStorage.getItem(this.lsName) ? JSON.parse(window.localStorage.getItem(this.lsName)) : {};
 
         this.LocalStorageParams = new LocalStorageParams(psAppLocalStorage);
 
@@ -42,7 +43,7 @@ class LocalStorageWorker {
 
     handleLocalStorageUpdate() {
         this.LocalStorageParams.lifeTime = +new Date();
-        window.localStorage.setItem('ls_fast_choose', JSON.stringify(this.LocalStorageParams));
+        window.localStorage.setItem(this.lsName, JSON.stringify(this.LocalStorageParams));
     }
 
     static checkLocalStorageWorkerPresence() {

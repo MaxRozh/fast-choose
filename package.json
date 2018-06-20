@@ -6,14 +6,17 @@
   "private": true,
   "scripts": {
     "test": "jest",
+    "watch-test": "jest --watch",
     "test-cov": "jest --coverage",
-    "dev": "webpack-dev-server --env.BROWSER=normal --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8080",
-    "dev-moz_ie": "webpack-dev-server --env.BROWSER=visitor_moz_ie --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8080",
+    "dev-m": "webpack-dev-server --env.APP_TYPE=main-app --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8080",
+    "dev-h": "webpack --config webpack.config.js --env.APP_TYPE=home-app --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors",
+    "dev-ss": "webpack-dev-server --env.APP_TYPE=sections-app --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8080",
+    "dev-s": "webpack-dev-server --env.APP_TYPE=section-app --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8080",
     "build": "webpack --env.BROWSER=normal --config webpack.config.prod.js -p",
     "build-moz_ie": "webpack --env.BROWSER=visitor_moz_ie --config webpack.config.prod.js -p",
-    "start:starter": "cd starter && npm run devserver",
-    "vdev": "concurrently \"npm run devserver\" \"npm run start:starter\"",
-    "vdev-moz_ie": "concurrently \"npm run devserver-moz_ie\" \"npm run start:starter\"",
+    "hdev": "concurrently \"npm run dev-m\" \"npm run dev-h\"",
+    "ssdev": "concurrently \"npm run dev-m\" \"npm run dev-ss\"",
+    "sdev": "concurrently \"npm run dev-m\" \"npm run dev-s\"",
     "analyze-bundle": "webpack --env.BROWSER=normal --config webpack-analyze.config.prod.js -p",
     "analyze-bundle-moz_ie": "webpack --env.BROWSER=visitor_moz_ie --config webpack-analyze.config.prod.js -p"
   },
@@ -27,6 +30,17 @@
       "^.+\\.scss$|^.+\\.wav": "<rootDir>/tests/mocks/style-mock.js",
       "globals": {
         "window": true
+      },
+      "collectCoverageFrom": [
+        "src/**"
+      ],
+      "coverageThreshold": {
+        "global": {
+          "branches": 80,
+          "functions": 80,
+          "lines": 80,
+          "statements": 80
+        }
       }
     }
   },
@@ -37,11 +51,11 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "sass": "^1.0.0-beta.4"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-loader": "^2.0.0",
     "autoprefixer": "^8.5.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
@@ -55,9 +69,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "concurrently": "^3.6.0",
     "css-loader": "^0.28.8",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
     "file-loader": "^1.1.6",
     "jest": "^22.1.0",
     "json-loader": "^0.5.4",
@@ -70,15 +87,15 @@
     "postcss-simple-vars": "^4.1.0",
     "react-addons-test-utils": "15.5.1",
     "react-hot-loader": "^3.1.3",
+    "react-redux": "^5.0.7",
     "react-test-renderer": "^16.2.0",
+    "redux": "^4.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "url-loader": "^0.5.6",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",
-    "webpack-dev-server": "^2.11.0",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "webpack-dev-server": "^2.11.0"
   }
 }

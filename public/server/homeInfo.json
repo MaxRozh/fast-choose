@@ -1,7 +1,4 @@
 {
-  "articleApi": "http://fast-choose.com/api/article.json",
-  "sectionApi": "http://fast-choose.com/api/article.json",
-  "newsApi": "http://fast-choose.com/api/article.json",
   "banners": [
     {
       "id": 321,

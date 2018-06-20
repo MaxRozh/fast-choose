@@ -1,0 +1,52 @@
+{
+  "mainParams": {
+    "homeScrLink": "/build/home_app_bundle.js",
+    "sectionsScrLink": "/build/sections_app_bundle.js",
+    "sectionScrLink": "/build/section_app_bundle.js",
+    "newsScrLink": "/build/?",
+    "lang": "ru",
+    "isLogin": true,
+    "sideBarParams": {
+      "favorites": [
+        {
+          "id": 32123132,
+          "link": "#",
+          "text": "favorite 1"
+        }
+      ],
+      "library": [
+        {
+          "id": 32000032,
+          "link": "#",
+          "text": "library 1"
+        },
+        {
+          "id": 32111132,
+          "link": "#",
+          "text": "library 2"
+        }
+      ],
+      "history": [
+        {
+          "id": 44123132,
+          "link": "#",
+          "text": "history 1"
+        },
+        {
+          "id": 55155132,
+          "link": "#",
+          "text": "history 2"
+        },
+        {
+          "id": 88332313,
+          "link": "#",
+          "text": "history 3"
+        }
+      ]
+    },
+    "location": {
+      "country": "Ukraine",
+      "city": "Kiev"
+    }
+  }
+}

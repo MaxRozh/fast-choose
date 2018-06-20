@@ -3,9 +3,22 @@ var webpack = require('webpack');
 
 module.exports = env => {
 
+    var APP_TYPE = env.APP_TYPE;
+    var filename = '';
 
-    var BROWSER = env.BROWSER;
-    var filename = BROWSER == "visitor_moz_ie" ? "moz-ie-bundle.js" : "bundle.js";
+    if (APP_TYPE === 'main-app') {
+
+        filename = 'main_app_bundle.js';
+    } else if (APP_TYPE === 'home-app') {
+
+        filename = 'home_app_bundle.js';
+    } else if (APP_TYPE === 'sections-app') {
+
+        filename = 'sections_app_bundle.js';
+    } else if (APP_TYPE === 'section') {
+
+        filename = 'section_app_bundle.js';
+    }
 
     return {
         entry: "./src/main.js",
@@ -69,8 +82,7 @@ module.exports = env => {
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production'),
-                    'BROWSER': JSON.stringify(BROWSER),
-                    'APP_TYPE': JSON.stringify('visitor')
+                    'APP_TYPE': JSON.stringify(APP_TYPE)
                 }
             }),
             new webpack.NoEmitOnErrorsPlugin(),

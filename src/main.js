@@ -4,37 +4,42 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import App from './app/impl/App.jsx';
+import MainApp from './main-app/MainApp.js';
 
-import configurateReducers from './reducers/index';
-import homeAppRequest from './request/homeAppRequest';
+import configurateReducers from './main-app/configurate-reducers/index';
+import mainAppRequest from './main-app/request/mainAppRequest';
 
 import TextCreator from './libs/text-creator/TextCreator.js';
 import LocalStorageWorker from './libs/local-storage-worker/LocalStorageWorker.js';
 
-const homeAppPromise = homeAppRequest();
+const mainAppPromise = mainAppRequest();
 
-homeAppPromise.then(
-    (homeAppParams) => {
+mainAppPromise.then(
+    (mainAppParams) => {
 
-        new LocalStorageWorker();
-        new TextCreator(homeAppParams.language);
+        new LocalStorageWorker('main');
+        new TextCreator(mainAppParams.language);
 
-        homeAppParams.text = {
-            homeAppText: TextCreator.createHomeAppText(),
+        mainAppParams.text = {
             headerText: TextCreator.createHeaderText(),
             footerText: TextCreator.createFooterText(),
-            sideBarText: {}
+            sideBarText: TextCreator.createSideBarText()
         };
 
-        const reducer = configurateReducers(homeAppParams);
+        const reducer = configurateReducers(mainAppParams);
         const store = createStore(reducer);
+        const pagesLink = {
+            homeScrLink: mainAppParams.homeScrLink,
+            sectionsScrLink: mainAppParams.sectionsScrLink,
+            sectionScrLink: mainAppParams.sectionScrLink,
+            newsScrLink: mainAppParams.newsScrLink
+        };
 
         ReactDOM.render(
             <Provider store={store}>
-                <App/>
+                <MainApp pagesLink={pagesLink} />
             </Provider>,
-            document.getElementById('container')
+            document.getElementById('main-app-container')
         );
     }
 );

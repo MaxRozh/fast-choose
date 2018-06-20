@@ -3,14 +3,37 @@ var webpack = require('webpack');
 
 module.exports = env => {
 
-    var BROWSER = env.BROWSER;
+    var APP_TYPE = env.APP_TYPE;
+    var outputFilename = '';
+    var entryFileName = '';
+
+    if (APP_TYPE === 'main-app') {
+
+        outputFilename = 'main_app_bundle.js';
+        entryFileName = 'main.js';
+    } else if (APP_TYPE === 'home-app') {
+
+        outputFilename = 'home_app_bundle.js';
+        entryFileName = 'screens/home-app/index.js';
+    } else if (APP_TYPE === 'sections-app') {
+
+        outputFilename = 'sections_app_bundle.js';
+        entryFileName = '';
+    } else if (APP_TYPE === 'section-app') {
+
+        outputFilename = 'section_app_bundle.js';
+        entryFileName = '';
+    }
+
+    console.warn(outputFilename);
+    console.warn(entryFileName);
 
     return {
-        entry: ["./src/main.js"],
+        entry: "./src/" + entryFileName,
         output: {
             path: __dirname + '/public/build/',
             publicPath: "build/",
-            filename: "bundle.js"
+            filename: outputFilename
         },
         resolveLoader: {
             moduleExtensions: ["-loader"]
@@ -79,8 +102,7 @@ module.exports = env => {
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('dev'),
-                    'BROWSER': JSON.stringify(BROWSER),
-                    'APP_TYPE': JSON.stringify('visitor'),
+                    'APP_TYPE': JSON.stringify(APP_TYPE),
                 }
             }),
             new webpack.NoEmitOnErrorsPlugin(),

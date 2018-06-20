@@ -18,18 +18,12 @@ const configurateSideBarReducer = (initialState) => {
 
     return (state = store, action) => {
 
-        log.warn('SIDEBAR REDUCE', state);
-
         switch (action.type) {
             case REMOVE_FAVORITE:
-
-                log.warn('REMOVE FAVORITES BEFORE', state, action);
 
                 state.favorites = state.favorites.filter((item) => {
                     return item.id !== action.id;
                 });
-
-                log.warn('REMOVE FAVORITES AFTER', state);
 
                 //if (isLogin)request
                 //localStorage
@@ -37,13 +31,9 @@ const configurateSideBarReducer = (initialState) => {
                 return Object.assign({}, state);
             case REMOVE_LIBRARY:
 
-                log.warn('REMOVE LIBRARY BEFORE', state);
-
                 state.library = state.library.filter((item) => {
                     return item.id !== action.id;
                 });
-
-                log.warn('REMOVE LIBRARY AFTER', state);
 
                 //if (isLogin)request
                 //localStorage

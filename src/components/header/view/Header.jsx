@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './Header.scss';
 
@@ -36,7 +37,7 @@ function Header({isSignIn = false, name, isStartedLogin = false, text, onSignIn,
 
     return (
         <header>
-            <div className="logo">Logo</div>
+            <Link to="/" replace className="logo">Logo</Link>
 
             <div className="search">
                 <input

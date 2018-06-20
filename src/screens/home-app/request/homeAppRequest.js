@@ -1,7 +1,7 @@
 
 import Promise from 'promise-polyfill';
 
-import sort from './sort.js';
+import sort from '../../../libs/sort.js';
 
 const getHomeAppStore = () => {
 
@@ -14,13 +14,11 @@ const getHomeAppStore = () => {
 
             if (xhr.status === 200) {
 
+                const languageXhr = new XMLHttpRequest();
                 let homeAppStore = JSON.parse(xhr.responseText);
                 homeAppStore.articles = sort(homeAppStore.articles);
 
-                const languageXhr = new XMLHttpRequest();
-
                 languageXhr.open('GET', '/server/' + homeAppStore.lang + '.json');
-
                 languageXhr.onload = () => {
 
                     if (xhr.status === 200) {
@@ -31,21 +29,20 @@ const getHomeAppStore = () => {
 
                     } else {
 
-                        reject(new Error());
-
                         console.error('Error in request. Status: ' + xhr.status);
                         console.error('Response text: ' + xhr.responseText);
+
+                        reject(new Error());
                     }
                 };
-
                 languageXhr.send(null);
 
             } else {
 
-                reject(new Error());
-
                 console.error('Error in request. Status: ' + xhr.status);
                 console.error('Response text: ' + xhr.responseText);
+
+                reject(new Error());
             }
         };
         xhr.send(null);

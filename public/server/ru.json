@@ -108,6 +108,10 @@
     {
       "id": "footer.a-ads",
       "text": "Про рекламу"
+    },
+    {
+      "id": "sidebar.no-saved",
+      "text": "Нет сохраненных"
     }
   ]
 }

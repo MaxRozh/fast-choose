@@ -23,15 +23,29 @@
             height: 100vh;
             background: #fafafa url("http://messenger-v4.providesupport.com/images/common/loader.gif") no-repeat 50% 50%;
         }
+        .before-load-component {
+            position: relative;
+            top: 0;
+            left: 0;
+            width:100%;
+            height: 55vh;
+            background: #fafafa url("http://messenger-v4.providesupport.com/images/common/loader.gif") no-repeat 50% 50%;
+        }
     </style>
 </head>
 <body>
 
-    <div id='container'>
+    <div id="main-app-container">
         <div class="before-load"></div>
     </div>
 
-    <script type="text/javascript" src="build/bundle.js" async></script>
+    <!--<div id='home-app-container'></div>-->
+
+    <!--<div id='sections-app-container'></div>-->
+
+    <!--<div id='section-app-container'></div>-->
+
+    <script type="text/javascript" src="build/main_app_bundle.js" async></script>
 
 </body>
 </html>

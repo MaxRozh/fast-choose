@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './HomeApp.scss';
 
@@ -17,9 +18,9 @@ function HomeApp({banners, articles, news, isSearching, searchingElements, onCho
 
                         <div className="content-banner">
                             <p>{banners[0].name} {banners[0].ad ? <span className="ad">{text.common.ad}</span> : null}</p>
-                            <a href={banners[0].link} target="_blank" rel="noopener noreferrer">
+                            <Link to="/section">
                                 <img src={banners[0].imgLink} alt={banners[0].name} />
-                            </a>
+                            </Link>
                             <p>{banners[0].description}</p>
                         </div>
                     </div>

@@ -1,10 +1,8 @@
 
 import * as actions from './actions';
-import { search as onSearch } from '../../../home-app/impl/actions';
+import { search as onSearch } from '../../../screens/home-app/home/impl/actions';
 
 export const mapStateToProps = (props) => {
-
-    log.warn('props', props.header);
 
     const {isSignIn, name, text, isStartedLogin} = props.header;
 
