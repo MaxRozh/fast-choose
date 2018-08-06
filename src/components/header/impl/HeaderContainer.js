@@ -1,6 +1,5 @@
 
 import * as actions from './actions';
-import { search as onSearch } from '../../../screens/home-app/home/impl/actions';
 
 export const mapStateToProps = (props) => {
 
@@ -19,9 +18,6 @@ export const mapDispatchToProps = (dispatch) => {
         onSignIn: () => dispatch(actions.signIn()),
         onLogin: (isStartedLogin, value) => dispatch(actions.login(isStartedLogin, value)),
         onLogout: () => dispatch(actions.logout()),
-        onSearch: (value) => {
-            dispatch(actions.search(value));
-            dispatch(onSearch(value));
-        }
+        onSearch: (value) => dispatch(actions.search(value))
     };
 };

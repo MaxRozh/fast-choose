@@ -6,16 +6,14 @@ import LocalStorageWorker from '../../../libs/local-storage-worker/LocalStorageW
 
 const configurateHeaderReducer = (initialState) => {
 
-    const store = createStore(initialState, LocalStorageWorker.getLocalStorageContainer('loginParams'));
+    const store = createStore(initialState, LocalStorageWorker.getLSContainer('loginParams'));
 
     return (state = store, action) => {
 
         switch (action.type) {
             case SIGN_IN:
 
-                // console.group('SIGN_IN');
-                // console.warn('choose with:');
-                // console.table(action);
+                log.warn('SIGN IN', action);
 
                 return state;
             case LOGIN:
@@ -27,7 +25,7 @@ const configurateHeaderReducer = (initialState) => {
                     state.name = action.value;
                     state.isSignIn = true;
 
-                    LocalStorageWorker.setLocalStorageContainer('loginParams', {
+                    LocalStorageWorker.setLSContainer('loginParams', {
                         isLogin: true,
                         name: action.value
                     });
@@ -40,10 +38,13 @@ const configurateHeaderReducer = (initialState) => {
                 state.isSignIn = false;
                 state.isStartedLogin = false;
 
-                LocalStorageWorker.resetLocalStorageContainer('loginParams');
+                LocalStorageWorker.resetLSContainer('loginParams');
 
                 return Object.assign({}, state);
             case SEARCH:
+
+                action.onSearch(action.value);
+
                 return state;
             default:
                 return state;

@@ -11,14 +11,16 @@ import mainAppRequest from './main-app/request/mainAppRequest';
 
 import TextCreator from './libs/text-creator/TextCreator.js';
 import LocalStorageWorker from './libs/local-storage-worker/LocalStorageWorker.js';
+import GlobalWorker from './libs/GlobalWorker.js';
 
 const mainAppPromise = mainAppRequest();
 
 mainAppPromise.then(
     (mainAppParams) => {
 
-        new LocalStorageWorker('main');
+        new LocalStorageWorker();
         new TextCreator(mainAppParams.language);
+        new GlobalWorker();
 
         mainAppParams.text = {
             headerText: TextCreator.createHeaderText(),

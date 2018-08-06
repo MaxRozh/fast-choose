@@ -6,7 +6,11 @@ const handleDeleteLink = (args) => {
     let newArgs = {};
 
     for (let i in args) {
-        newArgs[i] = typeof args[i] == 'object' ? JSON.parse(JSON.stringify(args[i])) : args[i];
+        try {
+            newArgs[i] = typeof args[i] === 'object' ? JSON.parse(JSON.stringify(args[i])) : args[i];
+        } catch (e) {
+            newArgs[i] = args[i];
+        }
     }
 
     return newArgs;

@@ -3,50 +3,61 @@ import LocalStorageParams from './LocalStorageParams.js';
 
 class LocalStorageWorker {
 
-    constructor(localStorageType) {
+    constructor() {
 
-        this.lsName = 'ls_fc_' + localStorageType;
+        this.lsName = 'ls_fc';
         let psAppLocalStorage = window.localStorage.getItem(this.lsName) ? JSON.parse(window.localStorage.getItem(this.lsName)) : {};
 
         this.LocalStorageParams = new LocalStorageParams(psAppLocalStorage);
 
-        LocalStorageWorker.resetLocalStorageContainer = LocalStorageWorker.resetLocalStorageContainer.bind(this);
-        LocalStorageWorker.resetLocalStorage = LocalStorageWorker.resetLocalStorage.bind(this);
-        LocalStorageWorker.setLocalStorageContainer = LocalStorageWorker.setLocalStorageContainer.bind(this);
-        LocalStorageWorker.getLocalStorageContainer = LocalStorageWorker.getLocalStorageContainer.bind(this);
-        LocalStorageWorker.checkLocalStorageWorkerPresence = LocalStorageWorker.checkLocalStorageWorkerPresence.bind(this);
+        LocalStorageWorker.resetLSContainer = LocalStorageWorker.resetLSContainer.bind(this);
+        LocalStorageWorker.resetLS = LocalStorageWorker.resetLS.bind(this);
+        LocalStorageWorker.setLSContainer = LocalStorageWorker.setLSContainer.bind(this);
+        LocalStorageWorker.getLSContainer = LocalStorageWorker.getLSContainer.bind(this);
+        LocalStorageWorker.checkLSWorkerPresence = LocalStorageWorker.checkLSWorkerPresence.bind(this);
 
-        this.handleLocalStorageUpdate = this.handleLocalStorageUpdate.bind(this);
+        this.onUpdateLSParams = this.onUpdateLSParams.bind(this);
+        this.handleLSUpdate = this.handleLSUpdate.bind(this);
     }
 
-    static setLocalStorageContainer(container, value) {
+    static setLSContainer(container, value) {
+
+        this.onUpdateLSParams();
 
         this.LocalStorageParams[container] = value;
-        this.handleLocalStorageUpdate();
+        this.handleLSUpdate();
     }
 
-    static resetLocalStorageContainer(container) {
+    static resetLSContainer(container) {
+
+        this.onUpdateLSParams();
 
         this.LocalStorageParams[container] = null;
-        this.handleLocalStorageUpdate();
+        this.handleLSUpdate();
     }
 
-    static resetLocalStorage() {
+    static resetLS() {
 
         this.LocalStorageParams = {};
-        this.handleLocalStorageUpdate();
+        this.handleLSUpdate();
     }
 
-    static getLocalStorageContainer(container) {
+    static getLSContainer(container) {
+        this.onUpdateLSParams();
         return this.LocalStorageParams[container];
     }
 
-    handleLocalStorageUpdate() {
+    onUpdateLSParams() {
+        const lsItem = JSON.parse(window.localStorage.getItem(this.lsName));
+        this.LocalStorageParams.updateLSParams(lsItem || {});
+    }
+
+    handleLSUpdate() {
         this.LocalStorageParams.lifeTime = +new Date();
         window.localStorage.setItem(this.lsName, JSON.stringify(this.LocalStorageParams));
     }
 
-    static checkLocalStorageWorkerPresence() {
+    static checkLSWorkerPresence() {
         return this.LocalStorageParams !== undefined;
     }
 }

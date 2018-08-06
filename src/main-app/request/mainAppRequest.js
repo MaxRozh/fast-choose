@@ -2,7 +2,6 @@
 import Promise from 'promise-polyfill';
 
 const getMainAppStore = () => {
-
     return new Promise((resolve, reject) => {
 
         const xhr = new XMLHttpRequest();

@@ -1,7 +1,6 @@
 
 /* eslint no-case-declarations: 0 */
 
-// import { HomeAppActions } from './actions';
 import { CHOOSE_ARTICLE, SEARCH } from '../info/constants';
 import createStore from '../info/createStore.js';
 
@@ -15,6 +14,8 @@ const configurateHomeAppReducer = (initialState) => {
             case CHOOSE_ARTICLE:
                 return state;
             case SEARCH:
+
+                log.check('SEARCH', action);
 
                 if (action.value.length === 0) {
                     state.isSearching = false;

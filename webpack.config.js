@@ -18,11 +18,11 @@ module.exports = env => {
     } else if (APP_TYPE === 'sections-app') {
 
         outputFilename = 'sections_app_bundle.js';
-        entryFileName = '';
+        entryFileName = 'screens/sections/index.js';
     } else if (APP_TYPE === 'section-app') {
 
         outputFilename = 'section_app_bundle.js';
-        entryFileName = '';
+        entryFileName = 'screens/section/index.js';
     }
 
     console.warn(outputFilename);

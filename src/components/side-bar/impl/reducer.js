@@ -11,10 +11,10 @@ const configurateSideBarReducer = (initialState) => {
 
     const store = createStore(
         initialState,
-        LocalStorageWorker.getLocalStorageContainer('favorites'),
-        LocalStorageWorker.getLocalStorageContainer('library'),
-        LocalStorageWorker.getLocalStorageContainer('history'),
-        LocalStorageWorker.getLocalStorageContainer('loginParams'));
+        LocalStorageWorker.getLSContainer('favorites'),
+        LocalStorageWorker.getLSContainer('library'),
+        LocalStorageWorker.getLSContainer('history'),
+        LocalStorageWorker.getLSContainer('loginParams'));
 
     return (state = store, action) => {
 

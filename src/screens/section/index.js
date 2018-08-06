@@ -12,6 +12,35 @@ import ReactDOM from 'react-dom';
 // import TextCreator from '../../libs/text-creator/TextCreator.js';
 // import LocalStorageWorker from '../../libs/local-storage-worker/LocalStorageWorker.js';
 
+class TestComponent extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 'Section'
+        };
+
+        this.changeValue = this.changeValue.bind(this);
+
+        window.changeCurrentApp('section', [
+            {
+                name: 'onSearch',
+                action: this.changeValue
+            }
+        ]);
+    }
+
+    changeValue(value) {
+        log.warn('SECTION SEARCH', value);
+        this.setState({ value });
+    }
+
+    render() {
+
+        return <div>{this.state.value}</div>;
+    }
+}
+
 const loadSectionApp = () => {
 
     // const homeAppPromise = homeAppRequest();
@@ -38,14 +67,16 @@ const loadSectionApp = () => {
     //<App/>
     //</Provider>,
 
-    log.warn('SECTION IS LOADED');
+    log.warn('SECTION IS LOADED', 'what');
+
+    window.setNewLoadedApp('section');
 
     ReactDOM.render(
-        <div>SECTION</div>,
+        <TestComponent/>,
         document.getElementById('section-app-container')
     );
     // }
     // );
 };
 
-export default loadSectionApp;
+loadSectionApp();

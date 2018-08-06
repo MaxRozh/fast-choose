@@ -7,27 +7,14 @@ import Header from '../components/header/Header';
 import SideBar from '../components/side-bar/SideBar';
 import Footer from '../components/footer/Footer';
 import error404 from '../components/404/error404';
-// import HomeAppConnect from '../screens/home-app/HomeAppConnect.jsx';
+
+import homeAppConnect from '../screens/home-app/homeAppConnect.js';
+import SectionAppConnect from '../screens/section/sectionAppConnect.js';
 
 import './MainApp.scss';
 
-// const test = () => {
-
-// {/*<div id="home-app-container">*/}
-//     {/*<div className="before-load-component"/>*/}
-// {/*</div>*/}
-// {/*<Route*/}
-//     {/*exact*/}
-//     {/*path="/"*/}
-//     {/*component={() => <HomeAppConnect scrLink={this.props.pagesLink.homeScrLink}/>}*/}
-// {/*/>*/}
-// return <span/>;
-// };
 const sections = () => {
     return <p>Sections</p>;
-};
-const section = () => {
-    return <p>Section</p>;
 };
 
 class MainApp extends React.Component {
@@ -35,42 +22,57 @@ class MainApp extends React.Component {
     constructor(props) {
         super(props);
 
-        this.test = this.test.bind(this);
+        this.isComponentLoaded = false;
+
+        this.sectionApp = null;
+
+        this.loadHomeApp = this.loadHomeApp.bind(this);
+        this.loadSectionsApp = this.loadSectionsApp.bind(this);
+        this.loadSectionApp = this.loadSectionApp.bind(this);
     }
 
     componentDidMount() {
-        this.l = true;
+        this.isComponentLoaded = true;
     }
 
-    test() {
+    loadHomeApp() {
 
-        if (this.l) {
-            if (!window.homeAppIsLoaded) {
-
-                log.check('LOADING...');
-
-                const d = document.createElement('div');
-                d.id = 'home-app-container';
-                d.innerHTML = '<div class="before-load-component"></div>';
-                this.kek.appendChild(d);
-
-                const scr = document.createElement('script');
-                scr.type = 'text/javascript';
-                scr.async = true;
-                scr.id = 'home-app-scr';
-                scr.src = this.props.pagesLink.homeScrLink;
-                scr.onload = () => {
-                    window.homeAppIsLoaded = true;
-                };
-
-                document.getElementsByTagName('body')[0].appendChild(scr);
-            }
+        if (this.isComponentLoaded) {
+            homeAppConnect(this.appContentElem, this.props.pagesLink.homeScrLink);
         } else {
-            log.check(':)');
-            setTimeout(this.test, 100);
+            setTimeout(this.loadHomeApp, 100);
         }
 
         return <span/>;
+    }
+
+    loadSectionsApp() {
+
+        if (this.isComponentLoaded) {
+            return homeAppConnect(this.appContentElem, this.props.pagesLink.homeScrLink);
+        } else {
+            setTimeout(this.loadSectionsApp, 100);
+            return null;
+        }
+    }
+
+    loadSectionApp() {
+
+        if (this.isComponentLoaded) {
+            log.warn('1111111111');
+
+            if (this.sectionApp) {
+                return this.sectionApp;
+            } else {
+                this.sectionApp = <SectionAppConnect contentElement={this.appContentElem} sectionScrLink={this.props.pagesLink.sectionScrLink}/>;
+                return this.sectionApp;
+            }
+
+        } else {
+            log.check('22222222222222');
+            setTimeout(this.loadSectionApp, 100);
+            return null;
+        }
     }
 
     render() {
@@ -81,11 +83,11 @@ class MainApp extends React.Component {
                     <Header />
                     <SideBar />
 
-                    <div ref={Kek => this.kek = Kek}/>
+                    <div className="app-content" ref={AppContentElem => this.appContentElem = AppContentElem}/>
                     <Switch>
-                        <Route exact path="/" component={() => this.test()} />
+                        <Route exact path="/" component={() => this.loadHomeApp()} />
                         <Route path="/sections" component={sections} />
-                        <Route path="/section" component={section} />
+                        <Route path="/section" component={() => this.loadSectionApp()} />
                         <Route component={error404} />
                     </Switch>
 
@@ -104,7 +106,3 @@ if (process.env !== 'production') {
 }
 
 export default MainApp;
-
-// {/*<div id="home-app-container" />*/}
-// {/*<div id="sections-app-container" />*/}
-// {/*<div id="section-app-container" />*/}

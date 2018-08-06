@@ -7,10 +7,9 @@ import HomeApp from './home/HomeApp';
 class App extends React.Component {
 
     render() {
-
         return (
             <HashRouter>
-                <div className="app">
+                <div className="home-app">
                     <Switch>
                         <Route
                             exact

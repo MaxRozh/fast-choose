@@ -12,27 +12,21 @@ import homeAppRequest from './request/homeAppRequest';
 import TextCreator from '../../libs/text-creator/TextCreator.js';
 import LocalStorageWorker from '../../libs/local-storage-worker/LocalStorageWorker.js';
 
-log.check('laodHomeApp');
-
 const homeAppPromise = homeAppRequest();
 
 homeAppPromise.then(
     (homeAppParams) => {
 
-        new LocalStorageWorker('home');
+        window.setNewLoadedApp('home');
+        new LocalStorageWorker();
         new TextCreator(homeAppParams.language);
 
         homeAppParams.text = {
-            homeAppText: TextCreator.createHomeAppText(),
-            headerText: TextCreator.createHeaderText(),
-            footerText: TextCreator.createFooterText(),
-            sideBarText: {}
+            homeAppText: TextCreator.createHomeAppText()
         };
 
         const reducer = configurateReducers(homeAppParams);
         const store = createStore(reducer);
-
-        window.homeAppIsLoaded = true;
 
         ReactDOM.render(
             <Provider store={store}>

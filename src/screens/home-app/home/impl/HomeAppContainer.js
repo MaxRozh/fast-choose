@@ -16,6 +16,18 @@ export const mapStateToProps = (props) => {
 };
 
 export const mapDispatchToProps = (dispatch) => {
+
+    log.check('MAP DISPATCH');
+
+    window.changeCurrentApp('home', [
+        {
+            name: 'onSearch',
+            action: (value) => {
+                dispatch(actions.search(value));
+            }
+        }
+    ]);
+
     return {
         onChooseArticle: (id) => dispatch(actions.chooseArticle(id))
     };

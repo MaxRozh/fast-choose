@@ -24,6 +24,7 @@ export const signIn = () => {
 export const search = (value) => {
     return {
         type: constants.SEARCH,
+        onSearch: window.globalWorkerState.listeners.onSearch,
         value
     };
 };
