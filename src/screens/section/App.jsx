@@ -2,19 +2,19 @@
 import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
-import HomeApp from './home/HomeApp';
+import SectionApp from './app/SectionApp';
 
 class App extends React.Component {
 
     render() {
         return (
             <HashRouter>
-                <div className="home-app">
+                <div className="section-app">
                     <Switch>
                         <Route
                             exact
-                            path="/"
-                            component={HomeApp}
+                            path="/section"
+                            component={SectionApp}
                         />
                     </Switch>
                 </div>

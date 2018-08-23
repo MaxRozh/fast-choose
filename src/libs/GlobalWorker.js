@@ -17,9 +17,11 @@ class GlobalWorker {
         GlobalWorker.changeCurrentApp = GlobalWorker.changeCurrentApp.bind(this);
         this.handleUpdateGlobalListeners = this.handleUpdateGlobalListeners.bind(this);
 
-        window.setNewLoadedApp = GlobalWorker.setNewLoadedApp;
-        window.changeCurrentApp = GlobalWorker.changeCurrentApp;
-        window.globalWorkerState = this.state;
+        window.globalWorker = {
+            setNewLoadedApp: GlobalWorker.setNewLoadedApp,
+            changeCurrentApp: GlobalWorker.changeCurrentApp,
+            state: this.state
+        };
     }
 
     static setNewLoadedApp(appName) {

@@ -1,73 +1,73 @@
 
-.side-bar {
-  position: fixed;
-  top: 0;
-  width: 80px;
-  height: 100vh;
-  padding-top: 60px;
-  transform: translateX(-80px);
-  background-color: rgba(44, 21, 31, 0.3);
-  z-index: 30;
-
-  &_item {
-    position: relative;
-    border-top: 1px solid black;
-  }
-
-  &_item:last-child { border-bottom: 1px solid black; }
-
-  .side-bar_item-input {
-    display: block;
-    width: 100%;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    font-weight: bold;
-    cursor: pointer;
-
-    &:hover { text-decoration: underline; }
-  }
-
-  .remove-item {
-    position: relative;
-    display: inline-block;
-    float: right;
-    clear: both;
-    width: 10px;
-    height: 10px;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 10px;
-    cursor: pointer;
-  }
-
-  &_list {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 80px;
-    width: 250px;
-    padding: 15px;
-    background-color: #000000;
-    text-align: center;
-
-    &.opened { display: block; }
-
-    &-item {
-      margin-top: 10px;
-
-      a {
-        text-decoration: none;
-        color: #ffffff;
-      }
-    }
-
-    span {
-      color: #ffffff;
-    }
-
-    &-item:first-child {
-      margin-top: 0;
-    }
-  }
-}
+//.side-bar {
+//  position: fixed;
+//  top: 0;
+//  width: 80px;
+//  height: 100vh;
+//  padding-top: 60px;
+//  transform: translateX(-80px);
+//  background-color: rgba(44, 21, 31, 0.3);
+//  z-index: 30;
+//
+//  &_item {
+//    position: relative;
+//    border-top: 1px solid black;
+//  }
+//
+//  &_item:last-child { border-bottom: 1px solid black; }
+//
+//  .side-bar_item-input {
+//    display: block;
+//    width: 100%;
+//    height: 60px;
+//    text-align: center;
+//    line-height: 60px;
+//    font-weight: bold;
+//    cursor: pointer;
+//
+//    &:hover { text-decoration: underline; }
+//  }
+//
+//  .remove-item {
+//    position: relative;
+//    display: inline-block;
+//    float: right;
+//    clear: both;
+//    width: 10px;
+//    height: 10px;
+//    color: #ffffff;
+//    font-weight: bold;
+//    font-size: 10px;
+//    cursor: pointer;
+//  }
+//
+//  &_list {
+//    display: none;
+//    position: absolute;
+//    top: 0;
+//    left: 80px;
+//    width: 250px;
+//    padding: 15px;
+//    background-color: #000000;
+//    text-align: center;
+//
+//    &.opened { display: block; }
+//
+//    &-item {
+//      margin-top: 10px;
+//
+//      a {
+//        text-decoration: none;
+//        color: #ffffff;
+//      }
+//    }
+//
+//    span {
+//      color: #ffffff;
+//    }
+//
+//    &-item:first-child {
+//      margin-top: 0;
+//    }
+//  }
+//}

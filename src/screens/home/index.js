@@ -17,7 +17,7 @@ const homeAppPromise = homeAppRequest();
 homeAppPromise.then(
     (homeAppParams) => {
 
-        window.setNewLoadedApp('home');
+        window.globalWorker.setNewLoadedApp('home');
         new LocalStorageWorker();
         new TextCreator(homeAppParams.language);
 

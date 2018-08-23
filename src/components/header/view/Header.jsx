@@ -2,73 +2,102 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
+
+import LoginModal from './LoginModal.jsx';
 
 import './Header.scss';
 
-function Header({isSignIn = false, name, isStartedLogin = false, text, onSignIn, onLogin, onLogout,
-    onSearch}) {
+function Header({isSignIn = false, name, isProfileMenuOpened = false, text, profileAnchorEl, onSignIn, onLogin,
+    onLogout, onSearch, onOpenProfileMenu, onOpenSideBar}) {
 
-    let inputSearchElem = null;
-    let inputLoginElem = null;
+    let v = '';
 
-    const fireOnSearch = () => {
+    const fireOnSearch = (e) => {
 
-        const value = inputSearchElem !== null ? inputSearchElem.value.trim() : '';
+        const value = e && e.target ? e.target.value.trim() : v.trim();
+        v = value;
 
         onSearch(value);
     };
 
-    const fireOnLogin = () => {
-
-        if (inputLoginElem === null) {
-
-            onLogin(false, '');
-        } else {
-
-            const value = inputLoginElem !== null ? inputLoginElem.value.trim() : '';
-
-            if (value.length === 0) {
-                return;
-            }
-
-            onLogin(true, value);
-        }
-    };
-
     return (
         <header>
-            <Link to="/" replace className="logo">Logo</Link>
 
-            <div className="search">
-                <input
-                    type="text"
-                    placeholder={text.commonPlaceholder}
-                    ref={InputSearchElem => inputSearchElem = InputSearchElem}
-                    onChange={fireOnSearch}
-                />
-                <input type="button" value={text.search} onClick={fireOnSearch}/>
+            <div className="root">
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton className="menuButton" color="inherit" aria-label="Menu" onClick={onOpenSideBar}>
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="title" color="inherit" className="flex">
+                            <Link to="/" replace className="header__logo">Fast Choose</Link>
+                        </Typography>
+
+                        <TextField
+                            id="search"
+                            className="header__search"
+                            label={text.commonPlaceholder}
+                            type="search"
+                            margin="normal"
+                            onChange={fireOnSearch}
+                        />
+                        <IconButton onClick={fireOnSearch}>
+                            <SearchIcon />
+                        </IconButton>
+
+                        <div>
+                            <IconButton
+                                aria-owns="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={onOpenProfileMenu}
+                                color="inherit"
+                            >
+                                <AccountCircle />
+                                { isSignIn ? <Typography>{name}</Typography> : null}
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={profileAnchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right'
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right'
+                                }}
+                                open={isProfileMenuOpened}
+                                onClose={onOpenProfileMenu}
+                            >
+
+                                { isSignIn
+                                    ? <div>
+                                        <MenuItem onClick={() => onOpenProfileMenu({currentTarget: null}) }>Profile</MenuItem>
+                                        <MenuItem onClick={() => onOpenProfileMenu({currentTarget: null}) }>My account</MenuItem>
+                                        <MenuItem onClick={onLogout}>{text.logout}</MenuItem>
+                                    </div>
+                                    : <div>
+                                        <MenuItem>
+                                            <LoginModal onSignIn={onSignIn} onLogin={onLogin} text={text} />
+                                        </MenuItem>
+                                    </div>
+                                }
+                            </Menu>
+                        </div>
+                    </Toolbar>
+                </AppBar>
             </div>
 
-            <div className="sign-in">
-                <p>{isSignIn ? `${text.hi} ${name}` : `${text.hi} ${text.guest}`}</p>
-                { isSignIn
-                    ? <div>
-                        <button onClick={onLogout}>{text.logout}</button>
-                    </div>
-                    : <div>
-                        <button onClick={onSignIn}>{text.signUp}</button>
-                        <button onClick={fireOnLogin}>{text.login}</button>
-                        { isStartedLogin
-                            ? <input
-                                type="text"
-                                placeholder={text.loginPlaceholder}
-                                ref={InputLoginElem => inputLoginElem = InputLoginElem}
-                            />
-                            : null
-                        }
-                    </div>
-                }
-            </div>
         </header>
     );
 }
@@ -78,12 +107,15 @@ if (process.env !== 'production') {
     Header.propTypes = {
         isSignIn: PropTypes.bool.isRequired,
         name: PropTypes.string.isRequired,
-        isStartedLogin: PropTypes.bool.isRequired,
+        isProfileMenuOpened: PropTypes.bool.isRequired,
         text: PropTypes.object.isRequired,
+        profileAnchorEl: PropTypes.object,
         onSignIn: PropTypes.func.isRequired,
         onLogin: PropTypes.func.isRequired,
         onLogout: PropTypes.func.isRequired,
-        onSearch: PropTypes.func.isRequired
+        onSearch: PropTypes.func.isRequired,
+        onOpenProfileMenu: PropTypes.func.isRequired,
+        onOpenSideBar: PropTypes.func.isRequired
     };
 }
 

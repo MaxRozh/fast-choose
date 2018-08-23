@@ -1,10 +1,9 @@
 
 import * as constants from '../info/constants';
 
-export const login = (isStartedLogin, value) => {
+export const login = (value) => {
     return {
         type: constants.LOGIN,
-        isStartedLogin,
         value
     };
 };
@@ -24,7 +23,14 @@ export const signIn = () => {
 export const search = (value) => {
     return {
         type: constants.SEARCH,
-        onSearch: window.globalWorkerState.listeners.onSearch,
+        onSearch: window.globalWorker.state.listeners.onSearch,
         value
+    };
+};
+
+export const openProfileMenu = (event) => {
+    return {
+        type: constants.OPEN_PROFILE_MENU,
+        event
     };
 };

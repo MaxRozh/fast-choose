@@ -14,9 +14,7 @@
     "dev-s": "webpack --config webpack.config.js --env.APP_TYPE=section-app --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors",
     "build": "webpack --env.BROWSER=normal --config webpack.config.prod.js -p",
     "build-moz_ie": "webpack --env.BROWSER=visitor_moz_ie --config webpack.config.prod.js -p",
-    "hdev": "concurrently \"npm run dev-m\" \"npm run dev-h\"",
-    "ssdev": "concurrently \"npm run dev-m\" \"npm run dev-ss\"",
-    "sdev": "concurrently \"npm run dev-m\" \"npm run dev-s\"",
+    "dev": "concurrently \"npm run dev-m\" \"npm run dev-h\" \"npm run dev-ss\" \"npm run dev-s\"",
     "analyze-bundle": "webpack --env.BROWSER=normal --config webpack-analyze.config.prod.js -p",
     "analyze-bundle-moz_ie": "webpack --env.BROWSER=visitor_moz_ie --config webpack-analyze.config.prod.js -p"
   },
@@ -45,6 +43,8 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^1.5.1",
+    "@material-ui/icons": "^2.0.3",
     "eslint-plugin-react": "^7.8.2",
     "npm": "^6.1.0",
     "promise-polyfill": "6.0.2",
@@ -69,7 +69,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "concurrently": "^3.6.0",
+    "concurrently": "^3.6.1",
     "css-loader": "^0.28.8",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

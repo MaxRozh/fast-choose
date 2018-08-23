@@ -1,12 +1,12 @@
 
 import { combineReducers } from 'redux';
 
-import configurateHomeAppReducer from '../home/impl/reducer';
+import configurateSectionAppReducer from '../app/impl/reducer';
 
 export const configurateReducers = (store) => {
 
     return combineReducers({
-        homeApp: configurateHomeAppReducer(store)
+        sectionApp: configurateSectionAppReducer(store)
     });
 };
 

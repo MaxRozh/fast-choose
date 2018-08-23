@@ -8,8 +8,8 @@ import SideBar from '../components/side-bar/SideBar';
 import Footer from '../components/footer/Footer';
 import error404 from '../components/404/error404';
 
-import homeAppConnect from '../screens/home-app/homeAppConnect.js';
-import SectionAppConnect from '../screens/section/sectionAppConnect.js';
+import homeAppConnect from '../screens/home/homeAppConnect.js';
+import sectionAppConnect from '../screens/section/sectionAppConnect.js';
 
 import './MainApp.scss';
 
@@ -21,10 +21,16 @@ class MainApp extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            currentOpenedScreen: ''
+        };
+
+        this.num = 0;
+        this.isHomeAppLoaded = false;
+        this.isSectionsAppLoaded = false;
+        this.isSectionAppLoaded = false;
 
         this.isComponentLoaded = false;
-
-        this.sectionApp = null;
 
         this.loadHomeApp = this.loadHomeApp.bind(this);
         this.loadSectionsApp = this.loadSectionsApp.bind(this);
@@ -37,10 +43,42 @@ class MainApp extends React.Component {
 
     loadHomeApp() {
 
-        if (this.isComponentLoaded) {
+        if (this.num > 30) { return <span/>; }
+
+        if (this.isComponentLoaded && !this.isHomeAppLoaded) {
+
             homeAppConnect(this.appContentElem, this.props.pagesLink.homeScrLink);
-        } else {
+            this.isHomeAppLoaded = true;
+        } else if (!this.isComponentLoaded && !this.isHomeAppLoaded) {
+
             setTimeout(this.loadHomeApp, 100);
+            return <span/>;
+        }
+
+        if (this.state.currentOpenedScreen !== 'home-app') {
+            this.setState({ currentOpenedScreen: 'home-app' });
+        }
+
+        return <span/>;
+    }
+
+    loadSectionApp() {
+
+        if (this.num > 30) { return <span/>; }
+
+        if (this.isComponentLoaded && !this.isSectionAppLoaded) {
+
+            sectionAppConnect(this.appContentElem, this.props.pagesLink.sectionScrLink);
+            this.isSectionAppLoaded = true;
+
+        } else if (!this.isComponentLoaded && !this.isSectionAppLoaded) {
+
+            setTimeout(this.loadSectionApp, 100);
+            return <span/>;
+        }
+
+        if (this.state.currentOpenedScreen !== 'section') {
+            this.setState({ currentOpenedScreen: 'section' });
         }
 
         return <span/>;
@@ -56,30 +94,11 @@ class MainApp extends React.Component {
         }
     }
 
-    loadSectionApp() {
-
-        if (this.isComponentLoaded) {
-            log.warn('1111111111');
-
-            if (this.sectionApp) {
-                return this.sectionApp;
-            } else {
-                this.sectionApp = <SectionAppConnect contentElement={this.appContentElem} sectionScrLink={this.props.pagesLink.sectionScrLink}/>;
-                return this.sectionApp;
-            }
-
-        } else {
-            log.check('22222222222222');
-            setTimeout(this.loadSectionApp, 100);
-            return null;
-        }
-    }
-
     render() {
 
         return (
             <HashRouter>
-                <div className="app">
+                <div className={'app' + (this.state.currentOpenedScreen ? ` ${this.state.currentOpenedScreen}__screen` : null)}>
                     <Header />
                     <SideBar />
 

@@ -1,82 +1,44 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+
+import SideBarItem from './SideBarItem.jsx';
 
 import './SideBar.scss';
 
-function SideBar({favorites, library, history, openedListType, text, onRemoveFavorite, onRemoveLibrary,
-    onRemoveHistory, onOpenList}) {
+function SideBar({favorites, library, history, openedListType, text, isSideBarOpened, onToggleList, onCloseList,
+    onRemove, onToggleSideBar}) {
 
-    const fireOnOpenList = (listType) => {
-        onOpenList(listType, 'remove-item');
-    };
+    const favoritesList = SideBarItem('favorites', text, favorites, openedListType, onToggleList, onCloseList, onRemove);
+    const libraryList = SideBarItem('library', text, library, openedListType, onToggleList, onCloseList, onRemove);
+    const historyList = SideBarItem('history', text, history, openedListType, onToggleList, onCloseList, onRemove);
 
     return (
         <div className="side-bar">
 
-            <div className="side-bar_item favorites">
-                <span
-                    className="favorites_icon side-bar_item-input"
-                    onClick={() => { fireOnOpenList('favorites_icon'); }}
-                >F</span>
-                <div className={'side-bar_list' + (openedListType === 'favorites' ? ' opened' : '')}>
-                    { favorites.length === 0
-                        ? <span>{text.noSaved}</span>
-                        : favorites.map((item) => {
-                            return <div className="side-bar_list-item" key={item.id}>
-                                <a href={item.link}>{item.text}</a>
-                                <span
-                                    className="remove-item"
-                                    onClick={() => { onRemoveFavorite(item.id); }}
-                                >X</span>
-                            </div>;
-                        })
-                    }
-
+            <Drawer open={isSideBarOpened} onClose={() => onToggleSideBar(false)}>
+                <div
+                    tabIndex={0}
+                    role="button"
+                >
+                    <List component="nav">
+                        <ListItem button>
+                            {favoritesList}
+                        </ListItem>
+                        <Divider />
+                        <ListItem button divider>
+                            {libraryList}
+                        </ListItem>
+                        <ListItem button>
+                            {historyList}
+                        </ListItem>
+                    </List>
                 </div>
-            </div>
-
-            <div className="side-bar_item">
-                <span
-                    className="library_icon side-bar_item-input"
-                    onClick={() => { fireOnOpenList('library_icon'); }}
-                >L</span>
-                <div className={'side-bar_list' + (openedListType === 'library' ? ' opened' : '')}>
-                    { library.length === 0
-                        ? <span>{text.noSaved}</span>
-                        : library.map((item) => {
-                            return <div className="side-bar_list-item" key={item.id}>
-                                <a href={item.link}>{item.text}</a>
-                                <span
-                                    className="remove-item"
-                                    onClick={() => { onRemoveLibrary(item.id); }}
-                                >X</span>
-                            </div>;
-                        })
-                    }
-                </div>
-            </div>
-
-            <div className="side-bar_item history">
-                <span
-                    className="history_icon side-bar_item-input"
-                    onClick={() => { fireOnOpenList('history_icon'); }}
-                >H</span>
-                <div className={'side-bar_list' + (openedListType === 'history' ? ' opened' : '')}>
-                    { history.length === 0
-                        ? <span>{text.noSaved}</span>
-                        : history.map((item) => {
-                            return <div className="side-bar_list-item" key={item.id}>
-                                <a href={item.link}>{item.text}</a>
-                                <span
-                                    className="remove-item"
-                                    onClick={() => { onRemoveHistory(item.id); }}
-                                >X</span>
-                            </div>;
-                        })
-                    }
-                </div>
-            </div>
+            </Drawer>
 
         </div>
     );
@@ -93,10 +55,11 @@ if (process.env !== 'production') {
             PropTypes.bool.isRequired
         ]),
         text: PropTypes.object.isRequired,
-        onRemoveFavorite: PropTypes.func.isRequired,
-        onRemoveLibrary: PropTypes.func.isRequired,
-        onRemoveHistory: PropTypes.func.isRequired,
-        onOpenList: PropTypes.func.isRequired
+        isSideBarOpened: PropTypes.bool.isRequired,
+        onToggleList: PropTypes.func.isRequired,
+        onCloseList: PropTypes.func.isRequired,
+        onRemove: PropTypes.func.isRequired,
+        onToggleSideBar: PropTypes.func.isRequired
     };
 }
 

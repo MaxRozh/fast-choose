@@ -1,5 +1,7 @@
 
-import { SIGN_IN, LOGIN, SEARCH, LOGOUT } from '../info/constants';
+/* eslint no-case-declarations: 0 */
+
+import { SIGN_IN, LOGIN, SEARCH, LOGOUT, OPEN_PROFILE_MENU } from '../info/constants';
 import createStore from '../info/createStore';
 
 import LocalStorageWorker from '../../../libs/local-storage-worker/LocalStorageWorker.js';
@@ -18,18 +20,19 @@ const configurateHeaderReducer = (initialState) => {
                 return state;
             case LOGIN:
 
-                if (!action.isStartedLogin) {
-                    state.isStartedLogin = true;
-                } else {
+                const loginValue = action.value.trim();
 
-                    state.name = action.value;
-                    state.isSignIn = true;
-
-                    LocalStorageWorker.setLSContainer('loginParams', {
-                        isLogin: true,
-                        name: action.value
-                    });
+                if (loginValue.length === 0) {
+                    return state;
                 }
+
+                state.name = loginValue;
+                state.isSignIn = true;
+
+                LocalStorageWorker.setLSContainer('loginParams', {
+                    isLogin: true,
+                    name: loginValue
+                });
 
                 return Object.assign({}, state);
             case LOGOUT:
@@ -43,9 +46,17 @@ const configurateHeaderReducer = (initialState) => {
                 return Object.assign({}, state);
             case SEARCH:
 
-                action.onSearch(action.value);
+                const value = action.value.trim();
+
+                action.onSearch(value);
 
                 return state;
+            case OPEN_PROFILE_MENU:
+
+                state.isProfileMenuOpened = !state.isProfileMenuOpened;
+                state.profileAnchorEl = action.event.currentTarget;
+
+                return Object.assign({}, state);
             default:
                 return state;
         }

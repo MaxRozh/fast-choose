@@ -1,23 +1,27 @@
 
 import * as actions from './actions';
+import { toggleSideBar } from '../../side-bar/impl/actions';
 
 export const mapStateToProps = (props) => {
 
-    const {isSignIn, name, text, isStartedLogin} = props.header;
+    const {isSignIn, name, text, isProfileMenuOpened, profileAnchorEl} = props.header;
 
     return {
         isSignIn,
         name,
         text,
-        isStartedLogin
+        isProfileMenuOpened,
+        profileAnchorEl
     };
 };
 
 export const mapDispatchToProps = (dispatch) => {
     return {
         onSignIn: () => dispatch(actions.signIn()),
-        onLogin: (isStartedLogin, value) => dispatch(actions.login(isStartedLogin, value)),
+        onLogin: (value) => dispatch(actions.login(value)),
         onLogout: () => dispatch(actions.logout()),
-        onSearch: (value) => dispatch(actions.search(value))
+        onSearch: (value) => dispatch(actions.search(value)),
+        onOpenProfileMenu: (event) => dispatch(actions.openProfileMenu(event)),
+        onOpenSideBar: () => dispatch(toggleSideBar(true))
     };
 };

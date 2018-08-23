@@ -1,38 +1,31 @@
 
 import * as constants from '../info/constants';
 
-export const removeFavorite = (id) => {
+export const toggleSideBar = (isOpened) => {
     return {
-        type: constants.REMOVE_FAVORITE,
-        id
+        type: constants.TOGGLE_SIDEBAR,
+        isOpened
     };
 };
 
-export const removeLibrary = (id) => {
+export const toggleList = (listType) => {
     return {
-        type: constants.REMOVE_LIBRARY,
-        id
+        type: constants.TOGGLE_LIST,
+        listType
     };
 };
 
-export const removeHistory = (id) => {
+export const closeList = (listType) => {
     return {
-        type: constants.REMOVE_HISTORY,
-        id
+        type: constants.CLOSE_LIST,
+        listType
     };
 };
 
-export const openList = (listType, notClosedElem, onCloseList) => {
+export const remove = (listType, id) => {
     return {
-        type: constants.OPEN_LIST,
+        type: constants.REMOVE,
         listType,
-        notClosedElem,
-        onCloseList
-    };
-};
-
-export const closeList = () => {
-    return {
-        type: constants.CLOSE_LIST
+        id
     };
 };

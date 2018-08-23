@@ -1,56 +1,21 @@
 
 header {
-  background-color: antiquewhite;
 
-  div { display: inline-block; }
-
-  .logo { padding: 20px; }
-
-  .search input[type="text"], header .sign-in input[type="text"] {
-    margin-right: 10px;
-    padding: 5px;
-    border: 1px solid darkblue;
+  .root, .flex {
+    flex-grow: 1;
   }
 
-  .search {
-    padding: 10px;
-
-    input[type="button"] {
-      padding: 5px;
-      background-color: transparent;
-      border: 1px solid darkblue;
-      border-radius: 5px;
-      transition: 0.2s all ease-out;
-      outline: none;
-      cursor: pointer;
-
-      &:hover {
-        background-color: darkblue;
-        color: #fff;
-      }
-    }
+  .menuButton {
+    margin-left: -12px;
+    margin-right: 20px;
   }
 
-  .sign-in {
+  .header__logo {
+    color: #fff;
+    text-decoration: none;
+  }
 
-    input[type="text"] { margin-left: 10px; }
-
-    p { display: inline; }
-
-    button {
-      margin-left: 10px;
-      padding: 5px;
-      background-color: transparent;
-      border: 1px solid darkblue;
-      border-radius: 5px;
-      outline: none;
-      transition: 0.2s all ease-out;
-      cursor: pointer;
-
-      &:hover {
-        background-color: darkblue;
-        color: #fff;
-      }
-    }
+  .header__search {
+    margin-top: -5px;
   }
 }

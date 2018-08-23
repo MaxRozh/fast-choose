@@ -15,8 +15,6 @@ const configurateHomeAppReducer = (initialState) => {
                 return state;
             case SEARCH:
 
-                log.check('SEARCH', action);
-
                 if (action.value.length === 0) {
                     state.isSearching = false;
                     return Object.assign({}, state);

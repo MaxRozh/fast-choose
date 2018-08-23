@@ -1,9 +1,9 @@
 
 import {
-    REMOVE_FAVORITE, REMOVE_LIBRARY, REMOVE_HISTORY, OPEN_LIST, CLOSE_LIST
+    TOGGLE_SIDEBAR, TOGGLE_LIST, CLOSE_LIST, REMOVE
 } from '../info/constants';
 import createStore from '../info/createStore';
-import { removeClickListener, addClickListener } from './dropdown.js';
+// import { removeClickListener, addClickListener } from './dropdown.js';
 
 import LocalStorageWorker from '../../../libs/local-storage-worker/LocalStorageWorker.js';
 
@@ -19,52 +19,26 @@ const configurateSideBarReducer = (initialState) => {
     return (state = store, action) => {
 
         switch (action.type) {
-            case REMOVE_FAVORITE:
+            case TOGGLE_SIDEBAR:
 
-                state.favorites = state.favorites.filter((item) => {
-                    return item.id !== action.id;
-                });
-
-                //if (isLogin)request
-                //localStorage
+                state.isSideBarOpened = action.isOpened;
 
                 return Object.assign({}, state);
-            case REMOVE_LIBRARY:
+            case TOGGLE_LIST:
 
-                state.library = state.library.filter((item) => {
-                    return item.id !== action.id;
-                });
-
-                //if (isLogin)request
-                //localStorage
-
-                return Object.assign({}, state);
-            case REMOVE_HISTORY:
-
-                state.history = state.history.filter((item) => {
-                    return item.id !== action.id;
-                });
-
-                //if (isLogin)request
-                //localStorage
-
-                return Object.assign({}, state);
-            case OPEN_LIST:
-
-                if (state.openedListType === action.listType.replace('_icon', '')) {
-
-                    removeClickListener();
-                    state.openedListType = null;
-                } else {
-
-                    addClickListener('.' + action.listType, action.onCloseList, '.' + action.notClosedElem);
-                    state.openedListType = action.listType.replace('_icon', '');
-                }
+                state.openedListType = action.listType === state.openedListType ? null : action.listType;
 
                 return Object.assign({}, state);
             case CLOSE_LIST:
 
                 state.openedListType = null;
+
+                return Object.assign({}, state);
+            case REMOVE:
+
+                if (state[action.listType]) {
+                    state[action.listType] = state[action.listType].filter((item) => item.id !== action.id);
+                }
 
                 return Object.assign({}, state);
             default:

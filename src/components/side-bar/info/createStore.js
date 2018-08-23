@@ -61,7 +61,8 @@ const createStore = (params, favorites, library, history, loginParams) => {
         library: library || testLibrary,
         history: history || testHistory,
         openedListType: null,
-        isLogin: loginParams ? loginParams.isLogin : false
+        isLogin: loginParams ? loginParams.isLogin : false,
+        isSideBarOpened: false
     };
 };
 

@@ -5,7 +5,8 @@ const createStore = (params, loginParams) => {
         text: params.text.headerText,
         isSignIn: loginParams ? loginParams.isLogin : false,
         name: loginParams ? loginParams.name : '',
-        isStartedLogin: false
+        isProfileMenuOpened: false,
+        profileAnchorEl: {}
     };
 };
 

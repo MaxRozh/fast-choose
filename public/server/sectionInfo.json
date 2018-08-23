@@ -1,0 +1,20 @@
+{
+  "section": {
+      "link": "/where-to-go",
+      "id": 3312,
+      "koef": 0.7,
+      "display": {
+        "article": "where-to-go",
+        "description": "Are you cannot find place to go? No problem, we have fast solution...",
+        "colors": "#fff, #000"
+      }
+    },
+  "lang": "ru",
+  "location": {
+    "country": "Ukraine",
+    "city": "Kiev"
+  },
+  "clientPreference": {
+    "articles": ["where-to-go", "style"]
+  }
+}

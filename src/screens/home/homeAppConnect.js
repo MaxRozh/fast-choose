@@ -1,7 +1,7 @@
 
 const homeAppConnect = (contentElement, homeScrLink) => {
 
-    if (!window.globalWorkerState.homeAppIsLoaded) {
+    if (!window.globalWorker.state.homeAppIsLoaded) {
 
         const homeAppContainer = document.createElement('div');
         const scr = document.createElement('script');

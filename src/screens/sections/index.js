@@ -34,10 +34,6 @@ const loadSectionsApp = () => {
     //
     //         window.homeAppIsLoaded = true;
 
-                {/*<Provider store={store}>*/}
-                    {/*<App/>*/}
-                {/*</Provider>,*/}
-
     log.warn('SECTIONS IS LOADED');
 
     ReactDOM.render(

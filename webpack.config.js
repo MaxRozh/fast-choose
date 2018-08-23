@@ -14,7 +14,7 @@ module.exports = env => {
     } else if (APP_TYPE === 'home-app') {
 
         outputFilename = 'home_app_bundle.js';
-        entryFileName = 'screens/home-app/index.js';
+        entryFileName = 'screens/home/index.js';
     } else if (APP_TYPE === 'sections-app') {
 
         outputFilename = 'sections_app_bundle.js';
