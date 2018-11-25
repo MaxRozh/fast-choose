@@ -1,10 +1,7 @@
-
-import Language from '../../languages/Language.js';
+// import Language from '../../languages/Language;
 
 const createHomeNewsText = () => {
-
-    return {
-    };
+  return {};
 };
 
 export default createHomeNewsText;

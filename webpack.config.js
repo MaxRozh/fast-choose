@@ -10,33 +10,30 @@ module.exports = env => {
     if (APP_TYPE === 'main-app') {
 
         outputFilename = 'main_app_bundle.js';
-        entryFileName = 'main.js';
+        entryFileName = 'main.jsx';
     } else if (APP_TYPE === 'home-app') {
 
         outputFilename = 'home_app_bundle.js';
-        entryFileName = 'screens/home/index.js';
+        entryFileName = 'screens/home/index.jsx';
     } else if (APP_TYPE === 'sections-app') {
 
         outputFilename = 'sections_app_bundle.js';
-        entryFileName = 'screens/sections/index.js';
+        entryFileName = 'screens/sections/index.jsx';
     } else if (APP_TYPE === 'section-app') {
 
         outputFilename = 'section_app_bundle.js';
-        entryFileName = 'screens/section/index.js';
+        entryFileName = 'screens/section/index.jsx';
     }
 
-    console.warn(outputFilename);
-    console.warn(entryFileName);
-
     return {
-        entry: "./src/" + entryFileName,
+        entry: './src/' + entryFileName,
         output: {
             path: __dirname + '/public/build/',
-            publicPath: "build/",
+            publicPath: 'build/',
             filename: outputFilename
         },
         resolveLoader: {
-            moduleExtensions: ["-loader"]
+            moduleExtensions: ['-loader']
         },
         module: {
             loaders: [
@@ -47,29 +44,29 @@ module.exports = env => {
                 },
                 {
                     test: /\.css$/,
-                    loaders: "style-loader!css-loader!postcss-loader",
+                    loaders: 'style-loader!css-loader!postcss-loader',
                     exclude: [/node_modules/, /public/]
                 },
                 {
                     test: /\.scss$/,
-                    loaders: "style-loader!css-loader!postcss-loader!sass-loader",
+                    loaders: 'style-loader!css-loader!postcss-loader!sass-loader',
                     exclude: [/node_modules/, /public/]
                 },
                 {
                     test: /\.gif$/,
-                    loader: "url-loader?limit=10000&mimetype=image/gif"
+                    loader: 'url-loader?limit=10000&mimetype=image/gif'
                 },
                 {
                     test: /\.jpg$/,
-                    loader: "url-loader?limit=10000&mimetype=image/jpg"
+                    loader: 'url-loader?limit=10000&mimetype=image/jpg'
                 },
                 {
                     test: /\.png$/,
-                    loader: "url-loader?limit=10000&mimetype=image/png"
+                    loader: 'url-loader?limit=10000&mimetype=image/png'
                 },
                 {
                     test: /\.svg/,
-                    loader: "url-loader?limit=26000&mimetype=image/svg+xml"
+                    loader: 'url-loader?limit=26000&mimetype=image/svg+xml'
                 },
                 {
                     test: /\.jsx$/,
@@ -81,17 +78,17 @@ module.exports = env => {
                     loader: 'file-loader'
                 },
                 {
-                    enforce: "pre",
+                    enforce: 'pre',
                     test: [/\.js$/, /\.jsx$/],
                     exclude: /node_modules/,
-                    loader: "eslint-loader",
+                    loader: 'eslint-loader',
                     options: {
                         fix: false
                     }
                 },
                 {
                     test: /\.json$/,
-                    loader: "json-loader"
+                    loader: 'json-loader'
                 }
             ]
         },
@@ -108,7 +105,7 @@ module.exports = env => {
             new webpack.NoEmitOnErrorsPlugin(),
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
-                async: true,
+                async: true
             }),
             new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.optimize.AggressiveMergingPlugin()

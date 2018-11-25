@@ -1,35 +1,32 @@
+import Language from '../languages/Language';
 
-import Language from '../languages/Language.js';
-
-import createCommonText from './creators/createCommonText.js';
-import createHeaderText from './creators/createHeaderText.js';
-import createFooterText from './creators/createFooterText.js';
-import createSideBarText from './creators/createSideBarText.js';
+import createCommonText from './creators/createCommonText';
+import createHeaderText from './creators/createHeaderText';
+import createFooterText from './creators/createFooterText';
+import createSideBarText from './creators/createSideBarText';
 
 class TextCreator {
+  constructor(language) {
+    new Language(language);
+  }
 
-    constructor(language) {
-        new Language(language);
-    }
+  static createHomeAppText() {
+    return {
+      common: createCommonText(),
+    };
+  }
 
-    static createHomeAppText() {
+  static createHeaderText() {
+    return createHeaderText();
+  }
 
-        return {
-            common: createCommonText()
-        };
-    }
+  static createFooterText() {
+    return createFooterText();
+  }
 
-    static createHeaderText() {
-        return createHeaderText();
-    }
-
-    static createFooterText() {
-        return createFooterText();
-    }
-
-    static createSideBarText() {
-        return createSideBarText();
-    }
+  static createSideBarText() {
+    return createSideBarText();
+  }
 }
 
 export default TextCreator;

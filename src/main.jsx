@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import MainApp from './main-app/MainApp.js';
+import MainApp from './main-app/MainApp';
 
 import configurateReducers from './main-app/configurate-reducers/index';
 import mainAppRequest from './main-app/request/mainAppRequest';
@@ -13,9 +13,9 @@ import configurateHeaderReducer from './components/header/impl/reducer';
 import configurateSideBarReducer from './components/side-bar/impl/reducer';
 import configurateFooterReducer from './components/footer/impl/reducer';
 
-import TextCreator from './libs/text-creator/TextCreator.js';
-import LocalStorageWorker from './libs/local-storage-worker/LocalStorageWorker.js';
-import GlobalWorker from './libs/GlobalWorker.js';
+import TextCreator from './libs/text-creator/TextCreator';
+import LocalStorageWorker from './libs/local-storage-worker/LocalStorageWorker';
+import GlobalWorker from './libs/GlobalWorker';
 
 const mainAppPromise = mainAppRequest();
 

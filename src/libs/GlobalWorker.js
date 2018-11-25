@@ -1,49 +1,46 @@
-
 class GlobalWorker {
+  constructor() {
+    this.state = {
+      currentApp: null,
+      homeAppIsLoaded: false,
+      sectionsAppIsLoaded: false,
+      sectionAppIsLoaded: false,
+      listeners: {
+        onSearch: () => {},
+      },
+    };
 
-    constructor() {
+    GlobalWorker.setNewLoadedApp = GlobalWorker.setNewLoadedApp.bind(this);
+    GlobalWorker.changeCurrentApp = GlobalWorker.changeCurrentApp.bind(this);
+    this.handleUpdateGlobalListeners = this.handleUpdateGlobalListeners.bind(
+      this
+    );
 
-        this.state = {
-            currentApp: null,
-            homeAppIsLoaded: false,
-            sectionsAppIsLoaded: false,
-            sectionAppIsLoaded: false,
-            listeners: {
-                onSearch: () => {}
-            }
-        };
+    window.globalWorker = {
+      setNewLoadedApp: GlobalWorker.setNewLoadedApp,
+      changeCurrentApp: GlobalWorker.changeCurrentApp,
+      state: this.state,
+    };
+  }
 
-        GlobalWorker.setNewLoadedApp = GlobalWorker.setNewLoadedApp.bind(this);
-        GlobalWorker.changeCurrentApp = GlobalWorker.changeCurrentApp.bind(this);
-        this.handleUpdateGlobalListeners = this.handleUpdateGlobalListeners.bind(this);
+  static setNewLoadedApp(appName) {
+    this.state[appName + 'AppIsLoaded'] = true;
+  }
 
-        window.globalWorker = {
-            setNewLoadedApp: GlobalWorker.setNewLoadedApp,
-            changeCurrentApp: GlobalWorker.changeCurrentApp,
-            state: this.state
-        };
+  static changeCurrentApp(appName, listeners) {
+    if (this.state.currentApp === appName) {
+      return;
     }
 
-    static setNewLoadedApp(appName) {
-        this.state[appName + 'AppIsLoaded'] = true;
+    this.state.currentApp = appName;
+    this.handleUpdateGlobalListeners(listeners);
+  }
+
+  handleUpdateGlobalListeners(listeners) {
+    for (let i in listeners) {
+      this.state.listeners[listeners[i].name] = listeners[i].action;
     }
-
-    static changeCurrentApp(appName, listeners) {
-
-        if (this.state.currentApp === appName) {
-            return;
-        }
-
-        this.state.currentApp = appName;
-        this.handleUpdateGlobalListeners(listeners);
-    }
-
-    handleUpdateGlobalListeners(listeners) {
-
-        for (let i in listeners) {
-            this.state.listeners[listeners[i].name] = listeners[i].action;
-        }
-    }
+  }
 }
 
 export default GlobalWorker;

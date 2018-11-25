@@ -21,47 +21,47 @@ module.exports = env => {
     }
 
     return {
-        entry: "./src/main.js",
+        entry: './src/main.js',
         output: {
             path: __dirname + '/public/build/',
-            publicPath: "/js/",
+            publicPath: '/js/',
             filename: filename
         },
         resolveLoader: {
-            moduleExtensions: ["-loader"]
+            moduleExtensions: ['-loader']
         },
         module: {
             loaders: [
                 {
                     test: /\.js$/,
-                    loader: "babel",
+                    loader: 'babel',
                     exclude: [/node_modules/, /public/]
                 },
                 {
                     test: /\.css$/,
-                    loaders: "style-loader!css-loader!postcss-loader",
+                    loaders: 'style-loader!css-loader!postcss-loader',
                     exclude: [/node_modules/, /public/]
                 },
                 {
                     test: /\.scss$/,
-                    loaders: "style-loader!css-loader!postcss-loader!sass-loader",
+                    loaders: 'style-loader!css-loader!postcss-loader!sass-loader',
                     exclude: [/node_modules/, /public/]
                 },
                 {
                     test: /\.gif$/,
-                    loader: "url-loader?limit=10000&mimetype=image/gif"
+                    loader: 'url-loader?limit=10000&mimetype=image/gif'
                 },
                 {
                     test: /\.jpg$/,
-                    loader: "url-loader?limit=10000&mimetype=image/jpg"
+                    loader: 'url-loader?limit=10000&mimetype=image/jpg'
                 },
                 {
                     test: /\.png$/,
-                    loader: "url-loader?limit=10000&mimetype=image/png"
+                    loader: 'url-loader?limit=10000&mimetype=image/png'
                 },
                 {
                     test: /\.svg/,
-                    loader: "url-loader?limit=26000&mimetype=image/svg+xml"
+                    loader: 'url-loader?limit=26000&mimetype=image/svg+xml'
                 },
                 {
                     test: /\.jsx$/,
@@ -74,7 +74,7 @@ module.exports = env => {
                 },
                 {
                     test: /\.json$/,
-                    loader: "json-loader"
+                    loader: 'json-loader'
                 }
             ]
         },
@@ -121,5 +121,5 @@ module.exports = env => {
                 logLevel: 'info'
             })
         ]
-    }
+    };
 };
