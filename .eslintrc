@@ -11,8 +11,14 @@
     "node": true
   },
   "extends": [
+    "airbnb",
+    "react-app",
+    "prettier",
     "eslint:recommended",
     "plugin:react/recommended"
+  ],
+  "plugins": [
+    "prettier"
   ],
   "globals": {
     "window": true,

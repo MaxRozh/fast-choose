@@ -40,6 +40,9 @@ module.exports = env => {
                 {
                     test: /\.css$/,
                     loaders: "style-loader!css-loader!postcss-loader",
+                    options: {
+                        minimize: true
+                    },
                     exclude: [/node_modules/, /public/]
                 },
                 {

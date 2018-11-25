@@ -6,6 +6,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
+    "lint": "lynt",
+    "precommit": "lint-staged",
     "watch-test": "jest --watch",
     "test-cov": "jest --coverage",
     "dev-m": "webpack-dev-server --env.APP_TYPE=main-app --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8080",
@@ -42,10 +44,18 @@
       }
     }
   },
+  "lint-staged": {
+    "src/**/*.{js, jsx}": [
+      "node_modules/.bin/eslint --max-warnings=0",
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@material-ui/core": "^1.5.1",
     "@material-ui/icons": "^2.0.3",
     "eslint-plugin-react": "^7.8.2",
+    "lynt": "^0.5.4",
     "npm": "^6.1.0",
     "promise-polyfill": "6.0.2",
     "prop-types": "^15.6.0",
@@ -74,10 +84,15 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
     "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "file-loader": "^1.1.6",
+    "husky": "^1.2.0",
     "jest": "^22.1.0",
     "json-loader": "^0.5.4",
+    "lint-staged": "^8.1.0",
     "node-sass": "^4.7.2",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^11.1.0",
@@ -85,6 +100,7 @@
     "postcss-mixins": "^6.2.0",
     "postcss-nested": "^3.0.0",
     "postcss-simple-vars": "^4.1.0",
+    "prettier": "^1.15.2",
     "react-addons-test-utils": "15.5.1",
     "react-hot-loader": "^3.1.3",
     "react-redux": "^5.0.7",

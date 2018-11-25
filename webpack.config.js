@@ -102,7 +102,7 @@ module.exports = env => {
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('dev'),
-                    'APP_TYPE': JSON.stringify(APP_TYPE),
+                    'APP_TYPE': JSON.stringify(APP_TYPE)
                 }
             }),
             new webpack.NoEmitOnErrorsPlugin(),
